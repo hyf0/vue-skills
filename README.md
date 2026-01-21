@@ -10,13 +10,13 @@ npx add-skill hyf0/vue-skills
 
 ## Available Skills
 
-### 1. vue-best-practices (35 rules)
+### 1. vue-best-practices (41 rules)
 
 Comprehensive Vue 3 development best practices, TypeScript configuration, tooling troubleshooting, testing patterns, and composition API gotchas.
 
 | Type | Count | Examples |
 |------|-------|----------|
-| Capability | 16 | vue-tsc compatibility, Volar 3.0, defineModel issues, Vue 3.5 features |
+| Capability | 22 | vue-tsc compatibility, Volar 3.0, vueCompilerOptions, template directive comments |
 | Efficiency | 19 | Testing patterns, composition API, SFC patterns, TypeScript utilities |
 
 ### 2. pinia-best-practices (2 rules)

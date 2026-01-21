@@ -4,7 +4,7 @@ description: Comprehensive Vue 3 development best practices, TypeScript configur
 license: MIT
 metadata:
   author: hyf0
-  version: "4.0.0"
+  version: "5.0.0"
 ---
 
 # Vue Best Practices
@@ -36,6 +36,14 @@ Rules that enable AI to solve problems it cannot solve without the skill.
 | [vue-tsc-strict-templates](rules/vue-tsc-strict-templates.md) | HIGH | Enable strict template checking to catch undefined components |
 | [vue-define-model-generics](rules/vue-define-model-generics.md) | HIGH | Fix vue-tsc errors when using defineModel with generic components |
 
+### vueCompilerOptions Settings
+
+| Rule | Impact | Description |
+|------|--------|-------------|
+| [fallthrough-attributes](rules/fallthrough-attributes.md) | HIGH | Type-check fallthrough attributes on wrapper components |
+| [strict-css-modules](rules/strict-css-modules.md) | MEDIUM | Catch typos in CSS module class names at compile time |
+| [data-attributes-config](rules/data-attributes-config.md) | MEDIUM | Allow data-* attributes with strictTemplates enabled |
+
 ### Tooling & Configuration
 
 | Rule | Impact | Description |
@@ -44,6 +52,7 @@ Rules that enable AI to solve problems it cannot solve without the skill.
 | [volar-3-breaking-changes](rules/volar-3-breaking-changes.md) | HIGH | Fix editor integration after Volar/vue-language-server 3.0 upgrade |
 | [module-resolution-bundler](rules/module-resolution-bundler.md) | HIGH | Fix "Cannot find module" errors after @vue/tsconfig upgrade |
 | [unplugin-auto-import-conflicts](rules/unplugin-auto-import-conflicts.md) | HIGH | Fix component types resolving as any with unplugin conflicts |
+| [codeactions-save-performance](rules/codeactions-save-performance.md) | HIGH | Fix 30-60 second save delays in large Vue projects |
 
 ### Vite Configuration
 
@@ -61,6 +70,18 @@ Rules that enable AI to solve problems it cannot solve without the skill.
 | [with-defaults-union-types](rules/with-defaults-union-types.md) | MEDIUM | Fix incorrect default value behavior with union type props |
 | [verbatim-module-syntax](rules/verbatim-module-syntax.md) | MEDIUM | Fix Vite dev server errors with type-only imports |
 | [deep-watch-numeric](rules/deep-watch-numeric.md) | MEDIUM | Enable efficient array mutation watching with Vue 3.5+ numeric deep |
+
+### Template Patterns
+
+| Rule | Impact | Description |
+|------|--------|-------------|
+| [vue-directive-comments](rules/vue-directive-comments.md) | HIGH | Control template type checking with @vue-ignore, @vue-skip directives |
+
+### SFC Patterns
+
+| Rule | Impact | Description |
+|------|--------|-------------|
+| [script-setup-jsdoc](rules/script-setup-jsdoc.md) | MEDIUM | Add JSDoc documentation to script setup components |
 
 ### Vue Router
 
