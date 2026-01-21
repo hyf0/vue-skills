@@ -2,6 +2,7 @@
 title: Vue 3.5+ Deep Watch Numeric Depth
 impact: MEDIUM
 impactDescription: enables efficient array mutation watching with numeric deep option
+type: capability
 tags: watch, deep, vue-3.5, array, mutation, performance
 ---
 

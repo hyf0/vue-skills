@@ -2,6 +2,7 @@
 title: Vue Test Utils TypeScript Wrapper Types
 impact: MEDIUM
 impactDescription: fixes "Property does not exist" errors when accessing wrapper.vm properties
+type: efficiency
 tags: vue-test-utils, vitest, testing, shallowMount, wrapper, typescript
 ---
 

@@ -2,6 +2,7 @@
 title: Extending Route Meta Types
 impact: HIGH
 impactDescription: enables type-safe custom route metadata with IDE autocomplete
+type: efficiency
 tags: vue-router, meta, typescript, module-augmentation, type-safe
 ---
 

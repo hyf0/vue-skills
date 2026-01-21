@@ -2,6 +2,7 @@
 title: Path Alias Resolution in Vue SFCs
 impact: HIGH
 impactDescription: fixes resolve.alias working in TS but failing in Vue files
+type: capability
 tags: vite, alias, resolve, vue-sfc, path, import
 ---
 

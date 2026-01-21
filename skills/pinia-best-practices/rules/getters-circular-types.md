@@ -2,6 +2,7 @@
 title: Pinia Getters Circular Type Reference
 impact: MEDIUM
 impactDescription: fixes TypeScript any or circular errors in getters using this
+type: efficiency
 tags: pinia, getters, circular-reference, typescript, this-type
 ---
 

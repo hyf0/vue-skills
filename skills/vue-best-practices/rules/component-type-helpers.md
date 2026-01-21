@@ -2,6 +2,7 @@
 title: Component Type Helpers
 impact: HIGH
 impactDescription: extract and use component prop, emit, and slot types
+type: efficiency
 tags: typescript, props, emits, slots, InstanceType, ComponentPublicInstance
 ---
 

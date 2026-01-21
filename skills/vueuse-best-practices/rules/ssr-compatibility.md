@@ -2,6 +2,7 @@
 title: VueUse SSR Compatibility
 impact: HIGH
 impactDescription: prevents SSR errors with browser-only VueUse composables
+type: efficiency
 tags: vueuse, ssr, nuxt, hydration, browser-api
 ---
 

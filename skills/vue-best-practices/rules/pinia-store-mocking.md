@@ -2,6 +2,7 @@
 title: Mocking Pinia Stores with Vitest
 impact: HIGH
 impactDescription: properly mocks Pinia stores in component tests
+type: efficiency
 tags: pinia, vitest, testing, mock, createTestingPinia, store
 ---
 

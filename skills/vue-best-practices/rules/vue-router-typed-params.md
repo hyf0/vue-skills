@@ -2,6 +2,7 @@
 title: Vue Router useRoute Params Union Type Narrowing
 impact: MEDIUM
 impactDescription: fixes "Property does not exist" errors with typed route params
+type: capability
 tags: vue-router, useRoute, unplugin-vue-router, typed-routes, params
 ---
 

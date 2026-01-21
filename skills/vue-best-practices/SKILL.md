@@ -23,16 +23,20 @@ Comprehensive development guidelines, TypeScript configuration, and best practic
 - Working with defineModel, defineProps, defineExpose
 - Writing reusable composables
 
-## Rule Categories
+---
 
-### Type Checking (HIGH Impact)
+## Capability Rules
+
+Rules that enable AI to solve problems it cannot solve without the skill.
+
+### Type Checking
 
 | Rule | Impact | Description |
 |------|--------|-------------|
 | [vue-tsc-strict-templates](rules/vue-tsc-strict-templates.md) | HIGH | Enable strict template checking to catch undefined components |
 | [vue-define-model-generics](rules/vue-define-model-generics.md) | HIGH | Fix vue-tsc errors when using defineModel with generic components |
 
-### Tooling & Configuration (HIGH Impact)
+### Tooling & Configuration
 
 | Rule | Impact | Description |
 |------|--------|-------------|
@@ -41,16 +45,14 @@ Comprehensive development guidelines, TypeScript configuration, and best practic
 | [module-resolution-bundler](rules/module-resolution-bundler.md) | HIGH | Fix "Cannot find module" errors after @vue/tsconfig upgrade |
 | [unplugin-auto-import-conflicts](rules/unplugin-auto-import-conflicts.md) | HIGH | Fix component types resolving as any with unplugin conflicts |
 
-### Vite Configuration (HIGH Impact)
+### Vite Configuration
 
 | Rule | Impact | Description |
 |------|--------|-------------|
 | [path-alias-vue-sfc](rules/path-alias-vue-sfc.md) | HIGH | Fix resolve.alias failures in Vue SFC files |
-| [runtime-env-variables](rules/runtime-env-variables.md) | HIGH | Implement runtime environment variables for multi-env deployments |
 | [duplicate-plugin-detection](rules/duplicate-plugin-detection.md) | MEDIUM | Detect and fix duplicate Vue plugin registration |
-| [hmr-vue-ssr](rules/hmr-vue-ssr.md) | MEDIUM | Fix HMR issues in Vue SSR applications |
 
-### Component Patterns (MEDIUM Impact)
+### Component Patterns
 
 | Rule | Impact | Description |
 |------|--------|-------------|
@@ -58,30 +60,64 @@ Comprehensive development guidelines, TypeScript configuration, and best practic
 | [define-model-update-event](rules/define-model-update-event.md) | MEDIUM | Fix runtime errors from unexpected undefined in model updates |
 | [with-defaults-union-types](rules/with-defaults-union-types.md) | MEDIUM | Fix incorrect default value behavior with union type props |
 | [verbatim-module-syntax](rules/verbatim-module-syntax.md) | MEDIUM | Fix Vite dev server errors with type-only imports |
-| [define-expose-types](rules/define-expose-types.md) | MEDIUM | Fix "Property does not exist" errors when accessing exposed methods |
-| [provide-inject-types](rules/provide-inject-types.md) | MEDIUM | Enable type-safe dependency injection with InjectionKey |
 | [deep-watch-numeric](rules/deep-watch-numeric.md) | MEDIUM | Enable efficient array mutation watching with Vue 3.5+ numeric deep |
 
-### Vue Router (MEDIUM Impact)
+### Vue Router
 
 | Rule | Impact | Description |
 |------|--------|-------------|
 | [vue-router-typed-params](rules/vue-router-typed-params.md) | MEDIUM | Fix route params type narrowing with unplugin-vue-router |
+
+### Testing Patterns
+
+| Rule | Impact | Description |
+|------|--------|-------------|
+| [teleport-testing](rules/teleport-testing.md) | HIGH | Test teleported content (modals, tooltips) |
+
+### TypeScript Patterns
+
+| Rule | Impact | Description |
+|------|--------|-------------|
+| [vueuse-emits-conflict](rules/vueuse-emits-conflict.md) | MEDIUM | Fix $emit type conflicts with VueUse element composables |
+
+---
+
+## Efficiency Rules
+
+Rules that help AI solve problems more effectively and consistently.
+
+### Vite Configuration
+
+| Rule | Impact | Description |
+|------|--------|-------------|
+| [runtime-env-variables](rules/runtime-env-variables.md) | HIGH | Implement runtime environment variables for multi-env deployments |
+| [hmr-vue-ssr](rules/hmr-vue-ssr.md) | MEDIUM | Fix HMR issues in Vue SSR applications |
+
+### Component Patterns
+
+| Rule | Impact | Description |
+|------|--------|-------------|
+| [define-expose-types](rules/define-expose-types.md) | MEDIUM | Fix "Property does not exist" errors when accessing exposed methods |
+| [provide-inject-types](rules/provide-inject-types.md) | MEDIUM | Enable type-safe dependency injection with InjectionKey |
+
+### Vue Router
+
+| Rule | Impact | Description |
+|------|--------|-------------|
 | [route-meta-types](rules/route-meta-types.md) | HIGH | Extend RouteMeta interface for type-safe metadata |
 | [scroll-behavior-types](rules/scroll-behavior-types.md) | MEDIUM | Properly type scrollBehavior function |
 | [dynamic-routes-typing](rules/dynamic-routes-typing.md) | MEDIUM | Type-safe dynamic route configuration |
 
-### Testing Patterns (HIGH Impact)
+### Testing Patterns
 
 | Rule | Impact | Description |
 |------|--------|-------------|
 | [suspense-testing](rules/suspense-testing.md) | HIGH | Test async components with Suspense properly |
-| [teleport-testing](rules/teleport-testing.md) | HIGH | Test teleported content (modals, tooltips) |
 | [pinia-store-mocking](rules/pinia-store-mocking.md) | HIGH | Mock Pinia stores correctly with Vitest |
 | [router-mocking](rules/router-mocking.md) | HIGH | Mock Vue Router with useRoute and useRouter |
 | [vue-test-utils-types](rules/vue-test-utils-types.md) | MEDIUM | Fix wrapper.vm property access types in Vue Test Utils |
 
-### Composition API Patterns (HIGH Impact)
+### Composition API Patterns
 
 | Rule | Impact | Description |
 |------|--------|-------------|
@@ -90,26 +126,21 @@ Comprehensive development guidelines, TypeScript configuration, and best practic
 | [ref-unwrapping](rules/ref-unwrapping.md) | MEDIUM | Understand ref auto-unwrapping in reactive objects |
 | [watcheffect-tracking](rules/watcheffect-tracking.md) | MEDIUM | Fix conditional dependency tracking in watchEffect |
 
-### SFC Patterns (MEDIUM Impact)
+### SFC Patterns
 
 | Rule | Impact | Description |
 |------|--------|-------------|
 | [script-setup-patterns](rules/script-setup-patterns.md) | HIGH | Best practices for script setup syntax |
 | [css-v-bind](rules/css-v-bind.md) | MEDIUM | Safely use reactive values in CSS |
 
-### TypeScript Patterns (MEDIUM Impact)
+### TypeScript Patterns
 
 | Rule | Impact | Description |
 |------|--------|-------------|
 | [component-type-helpers](rules/component-type-helpers.md) | HIGH | Extract component prop and emit types |
 | [event-handler-typing](rules/event-handler-typing.md) | MEDIUM | Type event handlers correctly |
-| [vueuse-emits-conflict](rules/vueuse-emits-conflict.md) | MEDIUM | Fix $emit type conflicts with VueUse element composables |
 
-## How to Use
-
-1. Review relevant rule categories based on your task
-2. Click through to individual rules for detailed guidance
-3. Apply the recommended patterns to your codebase
+---
 
 ## Reference
 

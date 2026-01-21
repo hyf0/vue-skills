@@ -2,6 +2,7 @@
 title: useTemplateRef with Generic Components
 impact: MEDIUM
 impactDescription: fixes incorrect type inference for refs to generic components
+type: capability
 tags: useTemplateRef, generics, ref, template-ref, vue-3.5, ComponentExposed
 ---
 

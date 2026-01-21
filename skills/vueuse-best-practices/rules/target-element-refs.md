@@ -2,6 +2,7 @@
 title: Target Element Refs for VueUse
 impact: MEDIUM
 impactDescription: fixes undefined target errors with VueUse element composables
+type: efficiency
 tags: vueuse, ref, template-ref, element, MaybeElementRef
 ---
 

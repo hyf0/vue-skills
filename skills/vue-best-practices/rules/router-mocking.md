@@ -2,6 +2,7 @@
 title: Mocking Vue Router with Vitest
 impact: HIGH
 impactDescription: properly mocks useRoute and useRouter in component tests
+type: efficiency
 tags: vue-router, vitest, testing, mock, useRoute, useRouter
 ---
 

@@ -2,6 +2,7 @@
 title: Testing Async Components with Suspense
 impact: HIGH
 impactDescription: properly tests Vue 3 async setup components
+type: efficiency
 tags: suspense, async, testing, vitest, vue-test-utils, flushPromises
 ---
 

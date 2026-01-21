@@ -14,30 +14,35 @@ npx add-skill hyf0/vue-skills
 
 Comprehensive Vue 3 development best practices, TypeScript configuration, tooling troubleshooting, testing patterns, and composition API gotchas.
 
-**Categories:**
-- **Type Checking** - vue-tsc strict templates, defineModel generics
-- **Tooling & Configuration** - Volar 3.0, moduleResolution, unplugin conflicts
-- **Vite Configuration** - Path aliases, runtime env, HMR SSR, duplicate plugins
-- **Component Patterns** - useTemplateRef, defineExpose, provide/inject, deep watch
-- **Vue Router** - Route meta types, scrollBehavior, dynamic routes, typed params
-- **Testing Patterns** - Suspense, Teleport, Pinia/Router mocking
-- **Composition API** - Reactive destructuring, ref unwrapping, watchEffect, cleanup
-- **SFC Patterns** - Script setup, CSS v-bind
-- **TypeScript Patterns** - Component type helpers, event typing
+| Type | Count | Examples |
+|------|-------|----------|
+| Capability | 16 | vue-tsc compatibility, Volar 3.0, defineModel issues, Vue 3.5 features |
+| Efficiency | 19 | Testing patterns, composition API, SFC patterns, TypeScript utilities |
 
 ### 2. pinia-best-practices (2 rules)
 
 Pinia store TypeScript configuration and typing issues.
 
-- storeToRefs type loss with Vue 3.5+
-- Getters circular type references
+| Type | Count | Examples |
+|------|-------|----------|
+| Capability | 1 | storeToRefs type loss with Vue 3.5+ |
+| Efficiency | 1 | Getters circular type references |
 
 ### 3. vueuse-best-practices (2 rules)
 
 VueUse composable patterns and TypeScript integration.
 
-- SSR compatibility
-- Target element refs
+| Type | Count | Examples |
+|------|-------|----------|
+| Efficiency | 2 | SSR compatibility, target element refs |
+
+## Rule Types
+
+Rules are classified into two categories:
+
+- **Capability**: AI *cannot* solve the problem without the skill. These address version-specific issues, undocumented behaviors, recent features, or edge cases outside AI's training data.
+
+- **Efficiency**: AI *can* solve the problem but not well. These provide optimal patterns, best practices, and consistent approaches that improve solution quality.
 
 ## Methodology
 

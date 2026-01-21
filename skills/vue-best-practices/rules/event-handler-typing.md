@@ -2,6 +2,7 @@
 title: Event Handler Typing
 impact: MEDIUM
 impactDescription: correctly type native and custom event handlers
+type: efficiency
 tags: typescript, events, emit, handlers, native-events
 ---
 

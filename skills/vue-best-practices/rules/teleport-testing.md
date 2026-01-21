@@ -2,6 +2,7 @@
 title: Testing Teleported Content
 impact: HIGH
 impactDescription: properly tests modals, tooltips, and other teleported components
+type: capability
 tags: teleport, modal, testing, vitest, vue-test-utils, dom
 ---
 

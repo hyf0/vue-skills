@@ -2,6 +2,7 @@
 title: provide/inject Type Safety
 impact: MEDIUM
 impactDescription: enables type-safe dependency injection with InjectionKey
+type: efficiency
 tags: provide, inject, InjectionKey, typescript, dependency-injection
 ---
 

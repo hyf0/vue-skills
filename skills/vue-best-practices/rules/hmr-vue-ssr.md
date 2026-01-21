@@ -2,6 +2,7 @@
 title: HMR Debugging for Vue SSR
 impact: MEDIUM
 impactDescription: fixes Hot Module Replacement breaking in Vue SSR applications
+type: efficiency
 tags: vite, hmr, ssr, vue, hot-reload, server-side-rendering
 ---
 

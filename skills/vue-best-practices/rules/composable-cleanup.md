@@ -2,6 +2,7 @@
 title: Composable Cleanup and Memory Leaks
 impact: HIGH
 impactDescription: prevents memory leaks in composables with proper cleanup
+type: efficiency
 tags: composable, cleanup, memory-leak, onUnmounted, lifecycle
 ---
 

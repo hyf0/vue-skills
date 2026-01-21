@@ -2,6 +2,7 @@
 title: storeToRefs Type Loss with Vue 3.5+
 impact: HIGH
 impactDescription: fixes incorrect double Ref wrapping in storeToRefs with Vue 3.5+
+type: capability
 tags: pinia, storeToRefs, vue-3.5, ref, typescript, nested-refs
 ---
 

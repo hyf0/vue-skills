@@ -2,6 +2,7 @@
 title: CSS v-bind for Reactive Styles
 impact: MEDIUM
 impactDescription: safely use reactive JavaScript values in CSS
+type: efficiency
 tags: css, v-bind, scoped, styles, reactive
 ---
 

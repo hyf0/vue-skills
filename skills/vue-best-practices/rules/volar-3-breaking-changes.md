@@ -2,6 +2,7 @@
 title: Volar 3.0 Breaking Changes
 impact: HIGH
 impactDescription: fixes editor integration after Volar/vue-language-server upgrade
+type: capability
 tags: volar, vue-language-server, neovim, vscode, ide, ts_ls, vtsls
 ---
 

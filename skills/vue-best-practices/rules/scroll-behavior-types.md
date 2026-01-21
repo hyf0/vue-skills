@@ -2,6 +2,7 @@
 title: Typing ScrollBehavior Functions
 impact: MEDIUM
 impactDescription: fixes type inference errors for router scrollBehavior
+type: efficiency
 tags: vue-router, scrollBehavior, typescript, scroll, navigation
 ---
 

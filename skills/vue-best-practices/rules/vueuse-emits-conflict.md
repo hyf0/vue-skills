@@ -2,6 +2,7 @@
 title: VueUse Composables Type Conflict with defineEmits
 impact: MEDIUM
 impactDescription: fixes $emit type incompatibility with VueUse element composables
+type: capability
 tags: vueuse, defineEmits, component-ref, typescript, $emit
 ---
 

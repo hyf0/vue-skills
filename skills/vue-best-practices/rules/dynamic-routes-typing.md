@@ -2,6 +2,7 @@
 title: Type-Safe Dynamic Route Configuration
 impact: MEDIUM
 impactDescription: prevents runtime errors when adding routes dynamically
+type: efficiency
 tags: vue-router, dynamic-routing, addRoute, typescript, RouteRecordRaw
 ---
 

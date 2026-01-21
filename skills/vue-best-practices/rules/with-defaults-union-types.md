@@ -2,6 +2,7 @@
 title: withDefaults Incorrect Default with Union Types
 impact: MEDIUM
 impactDescription: fixes incorrect default value behavior with union type props
+type: capability
 tags: withDefaults, defineProps, union-types, defaults, vue-3.5
 ---
 

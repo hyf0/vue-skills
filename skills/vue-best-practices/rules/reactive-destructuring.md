@@ -2,6 +2,7 @@
 title: Reactive Destructuring Loss Pattern
 impact: HIGH
 impactDescription: prevents silent reactivity loss when destructuring reactive objects
+type: efficiency
 tags: reactive, destructuring, toRefs, reactivity, composition-api
 ---
 

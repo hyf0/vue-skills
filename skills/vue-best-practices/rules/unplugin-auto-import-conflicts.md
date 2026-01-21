@@ -2,6 +2,7 @@
 title: unplugin-vue-components and unplugin-auto-import Type Conflicts
 impact: HIGH
 impactDescription: fixes component types resolving as any when using both plugins
+type: capability
 tags: unplugin-vue-components, unplugin-auto-import, types, any, dts
 ---
 

@@ -2,6 +2,7 @@
 title: Ref Auto-Unwrapping in Reactive Objects
 impact: MEDIUM
 impactDescription: prevents confusion from automatic ref unwrapping behavior
+type: efficiency
 tags: ref, reactive, unwrapping, proxy, composition-api
 ---
 

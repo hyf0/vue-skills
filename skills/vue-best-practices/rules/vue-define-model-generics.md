@@ -2,6 +2,7 @@
 title: defineModel with Generics Compilation Fix
 impact: HIGH
 impactDescription: fixes vue-tsc errors when using defineModel<T> with generic components
+type: capability
 tags: defineModel, generics, vue-tsc, typescript, compilation
 ---
 

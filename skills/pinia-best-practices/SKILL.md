@@ -18,12 +18,27 @@ TypeScript configuration and common pitfalls for Pinia stores in Vue 3 applicati
 - Fixing getter circular type references
 - Setting up type-safe store patterns
 
-## Rules
+---
+
+## Capability Rules
+
+Rules that enable AI to solve problems it cannot solve without the skill.
 
 | Rule | Impact | Description |
 |------|--------|-------------|
 | [storeToRefs-type-loss](rules/storeToRefs-type-loss.md) | HIGH | Fix incorrect nested ref types with Vue 3.5+ |
+
+---
+
+## Efficiency Rules
+
+Rules that help AI solve problems more effectively and consistently.
+
+| Rule | Impact | Description |
+|------|--------|-------------|
 | [getters-circular-types](rules/getters-circular-types.md) | MEDIUM | Fix TypeScript `any` or circular errors in getters using `this` |
+
+---
 
 ## Reference
 

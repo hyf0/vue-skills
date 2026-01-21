@@ -2,6 +2,7 @@
 title: vue-tsc and TypeScript Version Compatibility
 impact: HIGH
 impactDescription: prevents cryptic build failures from version incompatibility
+type: capability
 tags: vue-tsc, typescript, version, compatibility, build-errors
 ---
 

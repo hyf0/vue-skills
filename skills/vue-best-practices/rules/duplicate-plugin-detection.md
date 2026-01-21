@@ -2,6 +2,7 @@
 title: Duplicate Vue Plugin Detection
 impact: MEDIUM
 impactDescription: fixes cryptic build errors from Vue plugin registered twice
+type: capability
 tags: vite, plugin, vue, duplicate, config, inline
 ---
 

@@ -2,6 +2,7 @@
 title: defineModel Fires Update Event with Undefined
 impact: MEDIUM
 impactDescription: fixes runtime errors from unexpected undefined in model updates
+type: capability
 tags: defineModel, v-model, update-event, undefined, vue-3.5
 ---
 

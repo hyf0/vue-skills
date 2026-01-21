@@ -2,6 +2,7 @@
 title: Script Setup Best Practices
 impact: HIGH
 impactDescription: optimal patterns for Vue 3 script setup syntax
+type: efficiency
 tags: script-setup, sfc, composition-api, typescript, macros
 ---
 

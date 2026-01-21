@@ -2,6 +2,7 @@
 title: watchEffect Conditional Dependency Tracking
 impact: MEDIUM
 impactDescription: fixes watchEffect missing updates due to conditional access
+type: efficiency
 tags: watchEffect, watch, dependencies, tracking, reactivity
 ---
 

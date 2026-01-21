@@ -2,6 +2,7 @@
 title: defineExpose TypeScript Type Inference
 impact: MEDIUM
 impactDescription: fixes "Property does not exist" errors when accessing exposed component methods
+type: efficiency
 tags: defineExpose, expose, component-ref, typescript, InstanceType
 ---
 

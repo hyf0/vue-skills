@@ -2,6 +2,7 @@
 title: verbatimModuleSyntax Breaks Type-Only Imports in Dev Mode
 impact: MEDIUM
 impactDescription: fixes Vite dev server errors with type-only imports
+type: capability
 tags: verbatimModuleSyntax, vite, type-imports, dev-server, tsconfig
 ---
 

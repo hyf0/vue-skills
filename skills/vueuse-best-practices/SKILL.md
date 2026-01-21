@@ -15,15 +15,20 @@ Best practices and common gotchas for VueUse composables.
 
 - Working with VueUse composables
 - Debugging VueUse SSR issues
-- Integrating VueUse with Nuxt
 - Fixing type inference issues with VueUse
 
-## Rules
+---
+
+## Efficiency Rules
+
+Rules that help AI solve problems more effectively and consistently.
 
 | Rule | Impact | Description |
 |------|--------|-------------|
 | [ssr-compatibility](rules/ssr-compatibility.md) | HIGH | Handle VueUse composables in SSR environments |
 | [target-element-refs](rules/target-element-refs.md) | MEDIUM | Properly pass element refs to VueUse composables |
+
+---
 
 ## Reference
 

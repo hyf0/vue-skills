@@ -2,6 +2,7 @@
 title: Runtime Environment Variables for Vue
 impact: HIGH
 impactDescription: enables build-once deploy-anywhere pattern with runtime config
+type: efficiency
 tags: vite, environment, env, runtime, deployment, docker
 ---
 
