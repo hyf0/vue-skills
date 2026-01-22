@@ -8,24 +8,19 @@ tags: fallthroughAttributes, vueCompilerOptions, component-library, wrapper-comp
 
 # Enable Fallthrough Attributes Type Checking
 
-**Impact: HIGH** - enables type-safe fallthrough attributes in component libraries
+**Impact: MEDIUM** - enables type-aware attribute forwarding in component libraries
 
-When building component libraries with wrapper components, TypeScript doesn't type-check fallthrough attributes by default. Enable `fallthroughAttributes` to get proper type inference.
+When building component libraries with wrapper components, enable `fallthroughAttributes` to get IDE autocomplete for attributes that will be forwarded to child elements.
 
-## Problem
+## What It Does
 
-Wrapper components that pass attributes to child elements don't get type checking:
+Wrapper components that pass attributes to child elements can benefit from type-aware completion:
 
 ```vue
 <!-- MyButton.vue - wrapper around native button -->
 <template>
   <button v-bind="$attrs"><slot /></button>
 </template>
-```
-
-```vue
-<!-- Usage - no type error for invalid attribute -->
-<MyButton invalidAttr="value" />
 ```
 
 ## Solution
@@ -41,14 +36,14 @@ Enable `fallthroughAttributes` in your tsconfig:
 }
 ```
 
-With this enabled, TypeScript will check that fallthrough attributes are valid for the target element.
-
 ## How It Works
 
 When `fallthroughAttributes: true`:
 - Vue Language Server analyzes which element receives `$attrs`
-- Type checking is applied based on the target element's accepted attributes
-- Invalid attributes are flagged as type errors
+- IDE autocomplete suggests valid attributes for the target element
+- Helps developers discover available attributes
+
+> **Note:** This primarily enables IDE autocomplete for valid fallthrough attributes. It does NOT reject invalid attributes as type errors - arbitrary attributes are still allowed.
 
 ## Related Options
 

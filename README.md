@@ -8,7 +8,6 @@ Agent skills for Vue 3 development.
 >
 > Please give feedback when encountering any issues.
 
-
 ## Installation
 
 ```bash
@@ -17,31 +16,20 @@ npx add-skill hyf0/vue-skills
 
 ## Available Skills
 
-### 1. vue-best-practices (41 rules)
+### vue-best-practices (17 rules)
 
-Comprehensive Vue 3 development best practices, TypeScript configuration, tooling troubleshooting, testing patterns, and composition API gotchas.
-
-| Type | Count | Examples |
-|------|-------|----------|
-| Capability | 22 | vue-tsc compatibility, Volar 3.0, vueCompilerOptions, template directive comments |
-| Efficiency | 19 | Testing patterns, composition API, SFC patterns, TypeScript utilities |
-
-### 2. pinia-best-practices (2 rules)
-
-Pinia store TypeScript configuration and typing issues.
+Vue 3 development best practices covering TypeScript configuration, tooling troubleshooting, and testing patterns.
 
 | Type | Count | Examples |
 |------|-------|----------|
-| Capability | 1 | storeToRefs type loss with Vue 3.5+ |
-| Efficiency | 1 | Getters circular type references |
+| Capability | 15 | vue-tsc strictTemplates, Volar 3.0 breaking changes, Vue 3.5 deep watch, @vue-ignore directives |
+| Efficiency | 2 | HMR in SSR, Pinia store mocking |
 
-### 3. vueuse-best-practices (2 rules)
-
-VueUse composable patterns and TypeScript integration.
-
-| Type | Count | Examples |
-|------|-------|----------|
-| Efficiency | 2 | SSR compatibility, target element refs |
+**Key rules that models don't know without the skill:**
+- `vue-tsc-strict-templates` - vueCompilerOptions.strictTemplates config
+- `deep-watch-numeric` - Vue 3.5 `deep: 1` for efficient partial-depth watching
+- `vue-directive-comments` - @vue-ignore, @vue-expect-error, @vue-skip directives
+- `pinia-store-mocking` - createSpy requirement in @pinia/testing 1.0+
 
 ## Rule Types
 
@@ -64,17 +52,15 @@ Skills are sourced from actual developer pain points encountered in production.
 Each skill undergoes systematic testing:
 - **Baseline test**: Verify the model fails to solve the problem *without* the skill
 - **Skill test**: Confirm the model correctly solves the problem *with* the skill
-- **Consistency test**: Run multiple times to ensure reliable behavior
+- **Deletion criteria**: If both Sonnet AND Haiku pass without the skill, the rule will be deleted
 
 **3. Model Tier Validation**
 
-Skills are tested across model capabilities:
-
-| Model | Without Skill | With Skill | Requirement |
-|-------|--------------|------------|-------------|
-| Haiku | Expected: Fail | Pass | Skill kept |
-| Sonnet | Expected: Fail | Pass | Skill kept |
-| Opus | May pass | Should pass | Reference |
+| Model | Without Skill | With Skill | Action |
+|-------|--------------|------------|--------|
+| Haiku | Fail | Pass | Keep |
+| Sonnet | Fail | Pass | Keep |
+| Both | Pass | - | Delete |
 
 **Acceptance criteria**: A skill is only kept if it enables Haiku or Sonnet to solve a problem they couldn't solve without it.
 
