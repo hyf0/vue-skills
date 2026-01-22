@@ -10,14 +10,16 @@ tags: pinia, vitest, testing, mock, createTestingPinia, store
 
 **Impact: HIGH** - properly mocks Pinia stores in component tests
 
-Developers struggle to properly mock Pinia stores: `createTestingPinia` doesn't stub actions with Vitest's `vi.fn()`, and "injection Symbol(pinia) not found" errors occur.
+Developers struggle to properly mock Pinia stores: `createTestingPinia` requires explicit `createSpy` configuration, and "injection Symbol(pinia) not found" errors occur without proper setup.
+
+> **Important (@pinia/testing 1.0+):** The `createSpy` option is **REQUIRED**, not optional. Omitting it throws an error: "You must configure the `createSpy` option."
 
 ## Symptoms
 
 - "injection Symbol(pinia) not found" error
+- "You must configure the `createSpy` option" error
 - Actions not properly mocked
 - Store state not reset between tests
-- `vi.fn()` mocks not working with store actions
 
 ## Fix
 
@@ -34,7 +36,7 @@ test('component uses store', async () => {
     global: {
       plugins: [
         createTestingPinia({
-          createSpy: vi.fn,  // IMPORTANT: Use Vitest's spy
+          createSpy: vi.fn,  // REQUIRED in @pinia/testing 1.0+
           initialState: {
             counter: { count: 10 }  // Set initial state
           }

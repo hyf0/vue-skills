@@ -8,27 +8,27 @@ tags: withDefaults, defineProps, union-types, defaults, vue-3.5
 
 # withDefaults Incorrect Default with Union Types
 
-**Impact: MEDIUM** - fixes incorrect default value behavior with union type props
+**Impact: MEDIUM** - fixes spurious "Missing required prop" warning with union type props
 
-Using `withDefaults` with union types like `false | string` produces incorrect default value behavior. The type inference doesn't properly handle the union, leading to unexpected runtime values.
+Using `withDefaults` with union types like `false | string` may produce a Vue runtime warning "Missing required prop" even when a default is provided. The runtime value IS applied correctly, but the warning can be confusing.
 
 ## Symptoms
 
-- Default value not applied correctly for union type props
-- TypeScript shows correct type but runtime value is wrong
-- `false | string` prop gets wrong default
-- Prop appears as first union member instead of specified default
+- Vue warns "Missing required prop" despite default being set
+- Warning appears only with union types like `false | string`
+- TypeScript types are correct
+- Runtime value IS correct (the default is applied)
 
 ## Problematic Pattern
 
 ```typescript
-// This may not work correctly
+// This produces a spurious warning (but works at runtime)
 interface Props {
   value: false | string  // Union type
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  value: 'default'  // May not be applied correctly
+  value: 'default'  // Runtime value IS correct, but Vue warns about missing prop
 })
 ```
 

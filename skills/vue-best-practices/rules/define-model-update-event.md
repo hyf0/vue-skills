@@ -10,7 +10,9 @@ tags: defineModel, v-model, update-event, undefined, vue-3.5
 
 **Impact: MEDIUM** - fixes runtime errors from unexpected undefined in model updates
 
-Components using `defineModel` may fire the `@update:model-value` event twice - once with the value and once with `undefined`. TypeScript types don't reflect this behavior, causing runtime errors when the parent expects a non-nullable value.
+> **Version Note (2025):** This issue may be resolved in Vue 3.5+. Testing with Vue 3.5.26 could not reproduce the double emission with `undefined`. If you're on Vue 3.5+, verify the issue exists in your specific scenario before applying workarounds.
+
+Components using `defineModel` may fire the `@update:model-value` event with `undefined` in certain edge cases. TypeScript types don't always reflect this behavior, potentially causing runtime errors when the parent expects a non-nullable value.
 
 ## Symptoms
 
