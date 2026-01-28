@@ -30,6 +30,59 @@ This explicitly triggers the skill and ensures the AI follows the documented pat
 
 ## Available Skills
 
+### vue-development-guides
+
+Original from `vue-best-practices` of [`serkodev/vue-skills`](https://github.com/serkodev/vue-skills/tree/main)
+
+#### Demo - Todo App
+
+Prompt
+
+```
+create a todo app
+```
+
+🔎 See demo [full output](./demo/todo-app).
+
+#### Changes after using skill
+
+- More readable [code](demo/todo-app/with-skills/App.vue)
+- [Components](demo/todo-app/with-skills/components) splited
+- Moved states into composables ([useTodos.ts](demo/todo-app/with-skills/composables/useTodos.ts))
+- Use `shallowRef` for primitive reactive data (see [Reactivity Guide](skills/vue-best-prastice/references/reactivity-guide.md))
+
+### create-aptable-composable
+
+Original from `create-agnostic-composable` of [`serkodev/vue-skills`](https://github.com/serkodev/vue-skills/tree/main)
+
+
+#### Demo - useHidden
+
+Prompt
+
+```
+create a reusable composable for controling hidden for a element
+```
+
+🔎 See demo [full output](./demo/hidden-composable).
+
+#### Changes after using skill
+
+- Used `MaybeRef` and `MaybeRefOrGetter` for input parameters for reactivity flexibility.
+
+```ts
+export interface UseHiddenOptions {
+  hidden?: MaybeRef<boolean>
+  initialHidden?: MaybeRefOrGetter<boolean>
+  syncAria?: boolean
+}
+
+export function useHidden(
+  target?: MaybeRefOrGetter<HTMLElement | null | undefined>,
+  options: UseHiddenOptions = {},
+)
+```
+
 ### vue-best-practices (17 rules)
 
 Vue 3 development best practices covering TypeScript configuration, component typing, tooling troubleshooting, and testing patterns.
