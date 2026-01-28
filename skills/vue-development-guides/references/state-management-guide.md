@@ -2,7 +2,7 @@
 
 ## Tasks Checklist
 
-- [ ] Chose an appropriate store approach if applicable
+- [ ] Choose an appropriate store approach if applicable
   - [ ] Followed best practices for store usage
 
 ---
