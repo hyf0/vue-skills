@@ -61,7 +61,7 @@ Original from `create-agnostic-composable` of [`serkodev/vue-skills`](https://gi
 Prompt
 
 ```
-create a reusable composable for controling hidden for a element
+create a reusable composable for controlling hidden for a element
 ```
 
 🔎 See demo [full output](./demo/hidden-composable).
