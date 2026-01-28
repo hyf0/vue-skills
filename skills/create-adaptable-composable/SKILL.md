@@ -1,6 +1,6 @@
 ---
-name: create-aptable-composable
-description: Create a library-grade Vue composable that accepts maybe-reactive inputs (MaybeRef / MaybeRefOrGetter) so callers can pass a plain value, ref, or getter. Normalize inputs with toValue()/toRef() inside reactive effects (watch/watchEffect) to keep behavior predictable and reactive. Use this skill when user asks for creating aptable or reusable composables.
+name: create-adaptable-composable
+description: Create a library-grade Vue composable that accepts maybe-reactive inputs (MaybeRef / MaybeRefOrGetter) so callers can pass a plain value, ref, or getter. Normalize inputs with toValue()/toRef() inside reactive effects (watch/watchEffect) to keep behavior predictable and reactive. Use this skill when user asks for creating adaptable or reusable composables.
 license: MIT
 metadata:
     author: SerKo <https://github.com/serkodev>
@@ -12,7 +12,7 @@ compatibility: Requires Vue 3 (or above) or Nuxt 3 (or above) project
 
 Aptable composables are reusable functions that can accept both reactive and non-reactive inputs. This allows developers to use the composable in a variety of contexts without worrying about the reactivity of the inputs.
 
-Steps to design an aptable composable in Vue.js:
+Steps to design an adaptable composable in Vue.js:
 1. Confirm the composable's purpose and API design and expected inputs/outputs.
 2. Identify inputs params that should be reactive (MaybeRef / MaybeRefOrGetter).
 3. Use `toValue()` or `toRef()` to normalize inputs inside reactive effects.

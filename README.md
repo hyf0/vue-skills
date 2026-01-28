@@ -51,7 +51,7 @@ create a todo app
 - Moved states into composables ([useTodos.ts](demo/todo-app/with-skills/composables/useTodos.ts))
 - Use `shallowRef` for primitive reactive data (see [Reactivity Guide](skills/vue-best-prastice/references/reactivity-guide.md))
 
-### create-aptable-composable
+### create-adaptable-composable
 
 Original from `create-agnostic-composable` of [`serkodev/vue-skills`](https://github.com/serkodev/vue-skills/tree/main)
 
