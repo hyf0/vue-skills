@@ -1,6 +1,0 @@
-# Composable Guide
-
-## Tasks Checklist
-
----
-
