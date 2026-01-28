@@ -8,9 +8,9 @@ metadata:
 compatibility: Requires Vue 3 (or above) or Nuxt 3 (or above) project
 ---
 
-# Create Aptable Composable
+# Create Adaptable Composable
 
-Aptable composables are reusable functions that can accept both reactive and non-reactive inputs. This allows developers to use the composable in a variety of contexts without worrying about the reactivity of the inputs.
+Adaptable composables are reusable functions that can accept both reactive and non-reactive inputs. This allows developers to use the composable in a variety of contexts without worrying about the reactivity of the inputs.
 
 Steps to design an adaptable composable in Vue.js:
 1. Confirm the composable's purpose and API design and expected inputs/outputs.
@@ -47,7 +47,7 @@ When `MaybeRefOrGetter` or `MaybeRef` is used:
 
 ### Examples
 
-Aptable `useDocumentTitle` Composable: read-only title parameter
+Adaptable `useDocumentTitle` Composable: read-only title parameter
 
 ```ts
 import { watch, toRef } from 'vue'
@@ -60,7 +60,7 @@ export function useDocumentTitle(title: MaybeRefOrGetter<string>) {
 }
 ```
 
-Aptable `useCounter` Composable: two-way writable count parameter
+Adaptable `useCounter` Composable: two-way writable count parameter
 
 ```ts
 import { watch, toRef } from 'vue'
