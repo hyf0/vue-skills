@@ -27,13 +27,13 @@ This explicitly triggers the skill and ensures the AI follows the documented pat
 | Skill | When to use | Description |
 |-------|-------------|-------------|
 | **vue-best-practices** | Vue 3 + Composition API + TypeScript | Best practices, common gotchas, SSR guidance, performance |
-| **vue-debug-skill** | Debugging Vue 3 issues | Runtime errors, warnings, async error handling, hydration issues |
 | **vue-options-api-best-practices** | Options API (`data()`, `methods`) | `this` context, lifecycle, TypeScript with Options API |
 | **vue-router-best-practices** | Vue Router 4 | Navigation guards, route params, route-component lifecycle |
 | **vue-pinia-best-practices** | Pinia for state management | Store setup, reactivity, state patterns |
 | **vue-testing-best-practices** | Writing component or E2E tests | Vitest, Vue Test Utils, Playwright |
 | **vue-jsx-best-practices** | JSX in Vue | Syntax differences from React JSX |
 | **vue-development-guides** | Building a Vue/Nuxt project | Component splitting, data flow, core principles |
+| **vue-debug-guides** | Debugging Vue 3 issues | Runtime errors, warnings, async error handling, hydration issues |
 | **create-adaptable-composable** | Creating reusable composables | `MaybeRef`/`MaybeRefOrGetter` input patterns |
 
 ## Examples

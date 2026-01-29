@@ -18,12 +18,12 @@
 | Skill | Scope |
 |-------|-------|
 | **vue-best-practices** | Vue 3 with Composition API, `<script setup lang="ts">`, TypeScript, SSR. Includes render functions for cases where templates can't handle the requirement. |
-| **vue-debug-skill** | Debugging and troubleshooting Vue 3: runtime errors, warnings, async error handling, SSR hydration issues. |
 | **vue-options-api-best-practices** | Vue 3 Options API style (`data()`, `methods`, `this` context). Each rule shows Options API solution only. |
 | **vue-jsx-best-practices** | JSX syntax in Vue (e.g., `class` vs `className`, JSX plugin config). |
 | **vue-testing-best-practices** | Testing with Vitest, Vue Test Utils, and Playwright for E2E. |
 | **vue-router-best-practices** | Vue Router 4 patterns, navigation guards, route params, and route-component lifecycle interactions. |
 | **vue-pinia-best-practices** | Pinia stores, state management patterns, store setup, and reactivity with stores. |
+| **vue-debug-guides** | Debugging and troubleshooting Vue 3: runtime errors, warnings, async error handling, SSR hydration issues. |
 
 ## Common Pitfalls & Best Practices
 

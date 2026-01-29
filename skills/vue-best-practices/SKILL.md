@@ -8,7 +8,6 @@ metadata:
 ---
 
 Vue 3 best practices, common gotchas, and performance optimization.
-For debugging and error handling, use `vue-debug-skill`.
 
 ### Reactivity
 - Accessing ref() values without .value in scripts → See [ref-value-access](reference/ref-value-access.md)
