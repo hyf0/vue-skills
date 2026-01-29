@@ -135,6 +135,7 @@ Development happens on the `dev` branch. The `main` branch is reserved for publi
 
 ## Related projects
 
+- [antfu/skills](https://github.com/antfu/skills) - Anthony Fu's curated collection of agent skills for Vue/Vite/Nuxt
 - [vueuse/vueuse-skills](https://github.com/vueuse/vueuse-skills) - Agent skills for VueUse development
 - [onmax/nuxt-skills](https://github.com/onmax/nuxt-skills) - Agent skills for Nuxt development
 
