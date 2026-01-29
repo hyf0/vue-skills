@@ -8,6 +8,7 @@ metadata:
 ---
 
 Vue 3 best practices, common gotchas, and performance optimization.
+For debugging and error handling, use `vue-debug-skill`.
 
 ### Reactivity
 - Accessing ref() values without .value in scripts → See [ref-value-access](reference/ref-value-access.md)
@@ -20,7 +21,6 @@ Vue 3 best practices, common gotchas, and performance optimization.
 - Library instances breaking in reactive state → See [reactivity-markraw-for-non-reactive](reference/reactivity-markraw-for-non-reactive.md)
 - Expecting watchers to fire for each state change → See [reactivity-same-tick-batching](reference/reactivity-same-tick-batching.md)
 - Integrating external state management libraries → See [reactivity-external-state-integration](reference/reactivity-external-state-integration.md)
-- Tracing unexpected re-renders and state updates → See [reactivity-debugging-hooks](reference/reactivity-debugging-hooks.md)
 - Deriving state with watchEffect instead of computed → See [reactivity-computed-over-watcheffect-mutations](reference/reactivity-computed-over-watcheffect-mutations.md)
 
 ### Computed
@@ -35,8 +35,6 @@ Vue 3 best practices, common gotchas, and performance optimization.
 ### Watchers
 - Need to watch a reactive object property → See [watch-reactive-property-getter](reference/watch-reactive-property-getter.md)
 - Large nested data structures causing performance issues → See [watch-deep-performance](reference/watch-deep-performance.md)
-- Async operations overwriting with stale data → See [watch-async-cleanup](reference/watch-async-cleanup.md)
-- Creating watchers inside async callbacks → See [watch-async-creation-memory-leak](reference/watch-async-creation-memory-leak.md)
 - Dependencies accessed after await not tracking → See [watcheffect-async-dependency-tracking](reference/watcheffect-async-dependency-tracking.md)
 - Need to access updated DOM in watchers → See [watch-flush-timing](reference/watch-flush-timing.md)
 - Uncertain whether to use watch or watchEffect → See [watch-vs-watcheffect](reference/watch-vs-watcheffect.md)
@@ -47,7 +45,6 @@ Vue 3 best practices, common gotchas, and performance optimization.
 ### Components
 - Prop values being changed from a child component → See [props-are-read-only](reference/props-are-read-only.md)
 - Parent can't access child ref data in script setup → See [component-ref-requires-defineexpose](reference/component-ref-requires-defineexpose.md)
-- Child component throws "component not found" error → See [local-components-not-in-descendants](reference/local-components-not-in-descendants.md)
 - Click listener doesn't fire on custom component → See [click-events-on-components](reference/click-events-on-components.md)
 - HTML template parsing breaks Vue component syntax → See [in-dom-template-parsing-caveats](reference/in-dom-template-parsing-caveats.md)
 - Grandparent can't listen to grandchild emitted events → See [component-events-dont-bubble](reference/component-events-dont-bubble.md)
@@ -61,12 +58,8 @@ Vue 3 best practices, common gotchas, and performance optimization.
 ### Props & Emits
 - Boolean prop not parsing as expected → See [prop-boolean-casting-order](reference/prop-boolean-casting-order.md)
 - Composable doesn't update when props change → See [prop-composable-reactivity-loss](reference/prop-composable-reactivity-loss.md)
-- Variables referenced in defineProps cause errors → See [prop-defineprops-scope-limitation](reference/prop-defineprops-scope-limitation.md)
 - Destructured props not updating watchers → See [prop-destructured-watch-getter](reference/prop-destructured-watch-getter.md)
 - Prop validation needs component instance data → See [prop-validation-before-instance](reference/prop-validation-before-instance.md)
-- Component emits undeclared event causing warnings → See [declare-emits-for-documentation](reference/declare-emits-for-documentation.md)
-- defineEmits used inside function or conditional → See [defineEmits-must-be-top-level](reference/defineEmits-must-be-top-level.md)
-- defineEmits has both type and runtime arguments → See [defineEmits-no-runtime-and-type-mixed](reference/defineEmits-no-runtime-and-type-mixed.md)
 - Event name inconsistency in templates and scripts → See [emit-kebab-case-in-templates](reference/emit-kebab-case-in-templates.md)
 - Event payloads need validation during development → See [emit-validation-for-complex-payloads](reference/emit-validation-for-complex-payloads.md)
 - Native event listeners not responding to clicks → See [native-event-collision-with-emits](reference/native-event-collision-with-emits.md)
@@ -76,7 +69,6 @@ Vue 3 best practices, common gotchas, and performance optimization.
 - Rendering untrusted user content as HTML → See [v-html-xss-security](reference/v-html-xss-security.md)
 - Filtering or conditionally hiding list items → See [no-v-if-with-v-for](reference/no-v-if-with-v-for.md)
 - List items disappearing or swapping state unexpectedly → See [v-for-key-attribute](reference/v-for-key-attribute.md)
-- Getting template compilation errors with statements → See [template-expressions-restrictions](reference/template-expressions-restrictions.md)
 - Dynamic directive arguments not working properly → See [dynamic-argument-constraints](reference/dynamic-argument-constraints.md)
 - Functions in templates modifying data unexpectedly → See [template-functions-no-side-effects](reference/template-functions-no-side-effects.md)
 - v-else elements rendering unconditionally always → See [v-else-must-follow-v-if](reference/v-else-must-follow-v-if.md)
@@ -84,7 +76,6 @@ Vue 3 best practices, common gotchas, and performance optimization.
 - Array order changing after sorting or reversing → See [v-for-computed-reverse-sort](reference/v-for-computed-reverse-sort.md)
 - Getting off-by-one errors with range iteration → See [v-for-range-starts-at-one](reference/v-for-range-starts-at-one.md)
 - Performance issues with filtered or sorted lists → See [v-for-use-computed-for-filtering](reference/v-for-use-computed-for-filtering.md)
-- "Cannot read property of undefined" runtime errors → See [v-if-null-check-order](reference/v-if-null-check-order.md)
 - Deciding between v-if and v-show for conditionals → See [v-if-vs-v-show-performance](reference/v-if-vs-v-show-performance.md)
 - v-show or v-else not working on template elements → See [v-show-template-limitation](reference/v-show-template-limitation.md)
 
@@ -117,7 +108,6 @@ Vue 3 best practices, common gotchas, and performance optimization.
 ### Lifecycle
 - Lifecycle hooks don't execute asynchronously → See [lifecycle-hooks-synchronous-registration](reference/lifecycle-hooks-synchronous-registration.md)
 - DOM access fails before component mounts → See [lifecycle-dom-access-timing](reference/lifecycle-dom-access-timing.md)
-- Memory leaks from unremoved event listeners → See [cleanup-side-effects](reference/cleanup-side-effects.md)
 - SSR rendering differs from client hydration → See [lifecycle-ssr-awareness](reference/lifecycle-ssr-awareness.md)
 - Expensive operations slow performance drastically → See [updated-hook-performance](reference/updated-hook-performance.md)
 - DOM reads return stale values after state changes → See [dom-update-timing-nexttick](reference/dom-update-timing-nexttick.md)
@@ -136,9 +126,7 @@ Vue 3 best practices, common gotchas, and performance optimization.
 
 ### Provide/Inject
 - Injected values not updating when provider changes → See [provide-inject-reactivity-not-automatic](reference/provide-inject-reactivity-not-automatic.md)
-- Calling provide after async operations fails silently → See [provide-inject-synchronous-setup](reference/provide-inject-synchronous-setup.md)
 - String keys collide in large applications → See [provide-inject-symbol-keys](reference/provide-inject-symbol-keys.md)
-- Tracing where provided values come from → See [provide-inject-debugging-challenges](reference/provide-inject-debugging-challenges.md)
 - Multiple components share same default object → See [provide-inject-default-value-factory](reference/provide-inject-default-value-factory.md)
 - State mutations scattered across components → See [provide-inject-mutations-in-provider](reference/provide-inject-mutations-in-provider.md)
 - Passing props through many component layers → See [avoid-prop-drilling-use-provide-inject](reference/avoid-prop-drilling-use-provide-inject.md)
@@ -166,7 +154,6 @@ Vue 3 best practices, common gotchas, and performance optimization.
 - Fixing naming conflicts and unclear data origins in mixins → See [composition-api-mixins-replacement](reference/composition-api-mixins-replacement.md)
 - Applying functional patterns incorrectly to Vue state → See [composition-api-not-functional-programming](reference/composition-api-not-functional-programming.md)
 - Gradually migrating large Options API codebase → See [composition-api-options-api-coexistence](reference/composition-api-options-api-coexistence.md)
-- Lifecycle hooks failing silently after async operations → See [composition-api-script-setup-async-context](reference/composition-api-script-setup-async-context.md)
 - Coming from React, over-engineering Vue patterns unnecessarily → See [composition-api-vs-react-hooks-differences](reference/composition-api-vs-react-hooks-differences.md)
 - Parent component refs unable to access exposed properties → See [define-expose-before-await](reference/define-expose-before-await.md)
 
@@ -216,7 +203,6 @@ Vue 3 best practices, common gotchas, and performance optimization.
 ### Async Components
 - Setting up Vue Router route component loading → See [async-component-vue-router](reference/async-component-vue-router.md)
 - Async component options ignored by parent Suspense → See [async-component-suspense-control](reference/async-component-suspense-control.md)
-- Network failures or timeouts loading components → See [async-component-error-handling](reference/async-component-error-handling.md)
 - Improving Time to Interactive with SSR apps → See [async-component-hydration-strategies](reference/async-component-hydration-strategies.md)
 - Template refs undefined after component reactivation → See [async-component-keepalive-ref-issue](reference/async-component-keepalive-ref-issue.md)
 - Loading spinner flashing on fast networks → See [async-component-loading-delay](reference/async-component-loading-delay.md)
@@ -238,8 +224,6 @@ Vue 3 best practices, common gotchas, and performance optimization.
 - Understanding Vue's vdom optimization blocks → See [rendering-understand-vdom-block-structure](reference/rendering-understand-vdom-block-structure.md)
 
 ### Teleport
-- Teleport target element not found in DOM → See [teleport-target-must-exist](reference/teleport-target-must-exist.md)
-- Teleported content breaks SSR hydration → See [teleport-ssr-hydration](reference/teleport-ssr-hydration.md)
 - Modal breaks with parent CSS transforms → See [teleport-css-positioning-issues](reference/teleport-css-positioning-issues.md)
 - Content needs different layout on mobile → See [teleport-disabled-for-responsive](reference/teleport-disabled-for-responsive.md)
 - Unsure if props/events work through teleport → See [teleport-logical-hierarchy-preserved](reference/teleport-logical-hierarchy-preserved.md)
@@ -247,7 +231,6 @@ Vue 3 best practices, common gotchas, and performance optimization.
 - Scoped styles not applying to teleported content → See [teleport-scoped-styles-limitation](reference/teleport-scoped-styles-limitation.md)
 
 ### Suspense
-- Need to handle async errors from Suspense components → See [suspense-no-builtin-error-handling](reference/suspense-no-builtin-error-handling.md)
 - Want to track Suspense loading states programmatically → See [suspense-events-for-state-tracking](reference/suspense-events-for-state-tracking.md)
 - Planning Suspense usage in production applications → See [suspense-experimental-api-stability](reference/suspense-experimental-api-stability.md)
 - Fallback not showing when content changes → See [suspense-fallback-not-immediate-on-revert](reference/suspense-fallback-not-immediate-on-revert.md)
@@ -255,7 +238,6 @@ Vue 3 best practices, common gotchas, and performance optimization.
 - Combining Suspense with Router, Transition, KeepAlive → See [suspense-nesting-order-with-router](reference/suspense-nesting-order-with-router.md)
 - Nested async component not showing loading indicator → See [suspense-revert-only-on-root-change](reference/suspense-revert-only-on-root-change.md)
 - Multiple async components in single Suspense → See [suspense-single-child-requirement](reference/suspense-single-child-requirement.md)
-- Using Suspense with server-side rendering → See [suspense-ssr-hydration-issues](reference/suspense-ssr-hydration-issues.md)
 
 ### TypeScript
 - Declaring props with TypeScript in composition API components → See [ts-defineprops-type-based-declaration](reference/ts-defineprops-type-based-declaration.md)
@@ -274,7 +256,6 @@ Vue 3 best practices, common gotchas, and performance optimization.
 
 ### SSR
 - User data leaking between server requests → See [state-ssr-cross-request-pollution](reference/state-ssr-cross-request-pollution.md)
-- HTML differs between server and client renders → See [ssr-hydration-mismatch-causes](reference/ssr-hydration-mismatch-causes.md)
 - Code runs on both server and browser environments → See [ssr-platform-specific-apis](reference/ssr-platform-specific-apis.md)
 - Custom directives not displaying on server-rendered HTML → See [ssr-custom-directive-getssrprops](reference/ssr-custom-directive-getssrprops.md)
 
@@ -287,7 +268,6 @@ Vue 3 best practices, common gotchas, and performance optimization.
 - Page load metrics suffering from client-side JavaScript execution delay → See [perf-ssr-ssg-for-page-load](reference/perf-ssr-ssg-for-page-load.md)
 
 ### SFC (Single File Components)
-- Trying to use named exports from component script blocks → See [sfc-named-exports-forbidden](reference/sfc-named-exports-forbidden.md)
 - Starting a Vue project with a build setup → See [sfc-recommended-for-build-projects](reference/sfc-recommended-for-build-projects.md)
 - Styling child component elements with scoped CSS → See [sfc-scoped-css-child-component-styling](reference/sfc-scoped-css-child-component-styling.md)
 - Styling content added dynamically with v-html → See [sfc-scoped-css-dynamic-content](reference/sfc-scoped-css-dynamic-content.md)
@@ -299,15 +279,12 @@ Vue 3 best practices, common gotchas, and performance optimization.
 - Building Tailwind classes with string concatenation → See [tailwind-dynamic-class-generation](reference/tailwind-dynamic-class-generation.md)
 
 ### Plugins
-- Debugging why global properties cause naming conflicts → See [plugin-global-properties-sparingly](reference/plugin-global-properties-sparingly.md)
-- Plugin not working or inject returns undefined → See [plugin-install-before-mount](reference/plugin-install-before-mount.md)
 - Global properties not available in setup function → See [plugin-prefer-provide-inject-over-global-properties](reference/plugin-prefer-provide-inject-over-global-properties.md)
 - Creating a new Vue plugin from scratch → See [plugin-structure-install-method](reference/plugin-structure-install-method.md)
 - Preventing collisions between multiple plugins → See [plugin-symbol-injection-keys](reference/plugin-symbol-injection-keys.md)
 - Global properties missing TypeScript autocomplete support → See [plugin-typescript-type-augmentation](reference/plugin-typescript-type-augmentation.md)
 
 ### App Configuration
-- App configuration methods not working after mount call → See [configure-app-before-mount](reference/configure-app-before-mount.md)
 - Need to chain app configuration methods after mount → See [mount-return-value](reference/mount-return-value.md)
 - Vue only controlling specific page sections → See [multiple-app-instances](reference/multiple-app-instances.md)
 - Migrating dynamic component registration to Vite → See [dynamic-component-registration-vite](reference/dynamic-component-registration-vite.md)

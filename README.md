@@ -26,7 +26,8 @@ This explicitly triggers the skill and ensures the AI follows the documented pat
 
 | Skill | When to use | Description |
 |-------|-------------|-------------|
-| **vue-best-practices** | Vue 3 + Composition API + TypeScript | Common gotchas, reactivity patterns, SSR, performance |
+| **vue-best-practices** | Vue 3 + Composition API + TypeScript | Best practices, common gotchas, SSR guidance, performance |
+| **vue-debug-skill** | Debugging Vue 3 issues | Runtime errors, warnings, async error handling, hydration issues |
 | **vue-options-api-best-practices** | Options API (`data()`, `methods`) | `this` context, lifecycle, TypeScript with Options API |
 | **vue-router-best-practices** | Vue Router 4 | Navigation guards, route params, route-component lifecycle |
 | **vue-pinia-best-practices** | Pinia for state management | Store setup, reactivity, state patterns |
