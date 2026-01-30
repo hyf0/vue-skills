@@ -28,33 +28,42 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Sync files to main
+        id: sync
         run: |
-          # Create/update sync branch from main
-          git checkout -B sync/dev-to-main main
+          # Make sure we have up-to-date refs
+          git fetch origin main dev
 
-          # Remove all tracked files except .git
+          # Start from main
+          git checkout main
+          git pull --ff-only origin main
+
+          # Create a new branch for the sync
+          BRANCH="sync/dev-to-main-$(date +%Y%m%d%H%M%S)"
+          git checkout -b "$BRANCH"
+
           git rm -rf . || true
+          git checkout origin/dev -- skills/ .github/ README.md AGENTS.md CLAUDE.md LICENSE
 
-          # Checkout specific files from dev
-          git checkout dev -- skills/ .github/ README.md AGENTS.md CLAUDE.md LICENSE
-
-          # Stage changes for PR
           git add -A
           if git diff --staged --quiet; then
             echo "No changes to sync"
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
-          # Commit and push branch
           git commit -m "sync: update from dev branch"
-          git push -u origin sync/dev-to-main --force-with-lease
+          git push -u origin "$BRANCH"
+
+          echo "has_changes=true" >> "$GITHUB_OUTPUT"
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
 
       - name: Create Pull Request
+        if: steps.sync.outputs.has_changes == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh pr create \
-              --base main \
-              --head sync/dev-to-main \
-              --title "Sync dev to main" \
-              --body "Automated sync from dev branch via workflow."
+            --base main \
+            --head "${{ steps.sync.outputs.branch }}" \
+            --title "sync: update from dev branch" \
+            --body "Automated sync of selected files from \`dev\` into \`main\`."
