@@ -138,15 +138,6 @@ Development happens on the `dev` branch. The `main` branch is reserved for publi
 3. After approval, changes are merged to `dev`
 4. Maintainers sync `dev` → `main` via GitHub Action when ready to publish
 
-## Contributing
-
-Development happens on the `dev` branch. The `main` branch is reserved for published skills only.
-
-1. Create a feature branch from `dev`
-2. Submit a PR to `dev`
-3. After approval, changes are merged to `dev`
-4. Maintainers sync `dev` → `main` via GitHub Action when ready to publish
-
 ## Related projects
 
 - [antfu/skills](https://github.com/antfu/skills) - Anthony Fu's curated collection of agent skills for Vue/Vite/Nuxt
