@@ -91,6 +91,10 @@ For development best practices and common gotchas, use `vue-best-practices`.
 - Network failures or timeouts loading components → See [async-component-error-handling](reference/async-component-error-handling.md)
 - Template refs undefined after component reactivation → See [async-component-keepalive-ref-issue](reference/async-component-keepalive-ref-issue.md)
 
+### KeepAlive
+- Child components mount twice with nested Vue Router routes → See [keepalive-router-nested-double-mount](reference/keepalive-router-nested-double-mount.md)
+- Memory grows when combining KeepAlive with Transition animations → See [keepalive-transition-memory-leak](reference/keepalive-transition-memory-leak.md)
+
 ### Teleport
 - Teleport target element not found in DOM → See [teleport-target-must-exist](reference/teleport-target-must-exist.md)
 - Teleported content breaks SSR hydration → See [teleport-ssr-hydration](reference/teleport-ssr-hydration.md)

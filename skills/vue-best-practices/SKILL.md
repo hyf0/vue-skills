@@ -150,13 +150,9 @@ Vue 3 best practices, common gotchas, and performance optimization.
 - Animating list changes causing noticeable lag → See [animation-transitiongroup-performance](reference/animation-transitiongroup-performance.md)
 
 ### KeepAlive
-- Using KeepAlive without proper cache limits or cleanup → See [keepalive-memory-management](reference/keepalive-memory-management.md)
-- KeepAlive include/exclude props not matching cached components → See [keepalive-component-name-requirement](reference/keepalive-component-name-requirement.md)
-- Need to programmatically remove component from KeepAlive cache → See [keepalive-no-cache-removal-vue3](reference/keepalive-no-cache-removal-vue3.md)
-- Users see stale cached content when expecting fresh page data → See [keepalive-router-fresh-vs-cached](reference/keepalive-router-fresh-vs-cached.md)
-- Child components mount twice with nested Vue Router routes → See [keepalive-router-nested-double-mount](reference/keepalive-router-nested-double-mount.md)
-- Memory grows when combining KeepAlive with Transition animations → See [keepalive-transition-memory-leak](reference/keepalive-transition-memory-leak.md)
-- Dynamic component state resets when switching between them → See [dynamic-components-with-keepalive](reference/dynamic-components-with-keepalive.md)
+KeepAlive caches component instances to preserve state when switching between views. Use it for tabbed UIs, route-level caching, or any workflow where returning to a view should restore its state rather than re-mounting from scratch.
+
+- KeepAlive best practices and cache control patterns → See [component-keep-alive](reference/component-keep-alive.md)
 
 ### Async Components
 - Setting up Vue Router route component loading → See [async-component-vue-router](reference/async-component-vue-router.md)
