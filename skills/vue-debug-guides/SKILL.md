@@ -99,6 +99,7 @@ For development best practices and common gotchas, use `vue-best-practices`.
 ### Suspense
 - Need to handle async errors from Suspense components → See [suspense-no-builtin-error-handling](reference/suspense-no-builtin-error-handling.md)
 - Using Suspense with server-side rendering → See [suspense-ssr-hydration-issues](reference/suspense-ssr-hydration-issues.md)
+- Async component loading/error UI ignored under Suspense → See [async-component-suspense-control](reference/async-component-suspense-control.md)
 
 ### SSR
 - HTML differs between server and client renders → See [ssr-hydration-mismatch-causes](reference/ssr-hydration-mismatch-causes.md)

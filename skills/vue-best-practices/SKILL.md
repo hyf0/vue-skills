@@ -160,7 +160,6 @@ Vue 3 best practices, common gotchas, and performance optimization.
 
 ### Async Components
 - Setting up Vue Router route component loading → See [async-component-vue-router](reference/async-component-vue-router.md)
-- Async component options ignored by parent Suspense → See [async-component-suspense-control](reference/async-component-suspense-control.md)
 - Improving Time to Interactive with SSR apps → See [async-component-hydration-strategies](reference/async-component-hydration-strategies.md)
 - Loading spinner flashing on fast networks → See [async-component-loading-delay](reference/async-component-loading-delay.md)
 
@@ -186,13 +185,9 @@ Teleport renders part of a component in a different DOM location while preservin
 - Teleport best practices and common patterns → See [component-teleport](reference/component-teleport.md)
 
 ### Suspense
-- Want to track Suspense loading states programmatically → See [suspense-events-for-state-tracking](reference/suspense-events-for-state-tracking.md)
-- Planning Suspense usage in production applications → See [suspense-experimental-api-stability](reference/suspense-experimental-api-stability.md)
-- Fallback not showing when content changes → See [suspense-fallback-not-immediate-on-revert](reference/suspense-fallback-not-immediate-on-revert.md)
-- Nesting Suspense components together → See [suspense-nested-suspensible-prop](reference/suspense-nested-suspensible-prop.md)
-- Combining Suspense with Router, Transition, KeepAlive → See [suspense-nesting-order-with-router](reference/suspense-nesting-order-with-router.md)
-- Nested async component not showing loading indicator → See [suspense-revert-only-on-root-change](reference/suspense-revert-only-on-root-change.md)
-- Multiple async components in single Suspense → See [suspense-single-child-requirement](reference/suspense-single-child-requirement.md)
+Suspense coordinates async dependencies (async components or async setup) and renders a fallback while they resolve. Use it when you want a loading boundary for async trees, route-level views, or data-driven UI.
+
+- Suspense best practices, composition patterns, and common gotchas → See [component-suspense](reference/component-suspense.md)
 
 ### TypeScript
 - Declaring props with TypeScript in composition API components → See [ts-defineprops-type-based-declaration](reference/ts-defineprops-type-based-declaration.md)
