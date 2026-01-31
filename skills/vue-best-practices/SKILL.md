@@ -10,17 +10,7 @@ metadata:
 Vue 3 best practices, common gotchas, and performance optimization.
 
 ## Reactivity
-- Accessing ref() values without .value in scripts → See [ref-value-access](reference/ref-value-access.md)
-- Destructuring reactive() objects, losing reactivity → See [reactive-destructuring](reference/reactive-destructuring.md)
-- Choosing between ref() and reactive() for state → See [prefer-ref-over-reactive](reference/prefer-ref-over-reactive.md)
-- Accessing refs inside arrays and collections → See [refs-in-collections-need-value](reference/refs-in-collections-need-value.md)
-- Large objects or external library data overhead → See [shallow-ref-for-performance](reference/shallow-ref-for-performance.md)
-- Using nested refs in template expressions → See [template-ref-unwrapping-top-level](reference/template-ref-unwrapping-top-level.md)
-- Comparing reactive objects with === operator → See [reactivity-proxy-identity-hazard](reference/reactivity-proxy-identity-hazard.md)
-- Library instances breaking in reactive state → See [reactivity-markraw-for-non-reactive](reference/reactivity-markraw-for-non-reactive.md)
-- Expecting watchers to fire for each state change → See [reactivity-same-tick-batching](reference/reactivity-same-tick-batching.md)
-- Integrating external state management libraries → See [reactivity-external-state-integration](reference/reactivity-external-state-integration.md)
-- Deriving state with watchEffect instead of computed → See [reactivity-computed-over-watcheffect-mutations](reference/reactivity-computed-over-watcheffect-mutations.md)
+- Core reactivity patterns for ref(), shallowRef(), external state, and computed() → See [reactivity](reference/reactivity.md)
 
 ## Computed
 - Computed getter is making API calls or mutations → See [computed-no-side-effects](reference/computed-no-side-effects.md)

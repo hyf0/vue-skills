@@ -8,6 +8,13 @@ For development best practices and common gotchas, use `vue-best-practices`.
 
 ### Reactivity
 - Tracing unexpected re-renders and state updates → See [reactivity-debugging-hooks](reference/reactivity-debugging-hooks.md)
+- Ref values not updating due to missing .value access → See [ref-value-access](reference/ref-value-access.md)
+- State stops updating after destructuring reactive objects → See [reactive-destructuring](reference/reactive-destructuring.md)
+- Refs inside arrays, Maps, or Sets not unwrapping → See [refs-in-collections-need-value](reference/refs-in-collections-need-value.md)
+- Nested refs rendering as [object Object] in templates → See [template-ref-unwrapping-top-level](reference/template-ref-unwrapping-top-level.md)
+- Reactive proxy identity comparisons always return false → See [reactivity-proxy-identity-hazard](reference/reactivity-proxy-identity-hazard.md)
+- Third-party instances breaking when proxied → See [reactivity-markraw-for-non-reactive](reference/reactivity-markraw-for-non-reactive.md)
+- Watchers only firing once per tick unexpectedly → See [reactivity-same-tick-batching](reference/reactivity-same-tick-batching.md)
 
 ### Watchers
 - Async operations overwriting with stale data → See [watch-async-cleanup](reference/watch-async-cleanup.md)
