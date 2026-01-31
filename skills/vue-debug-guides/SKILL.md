@@ -110,6 +110,14 @@ For development best practices and common gotchas, use `vue-best-practices`.
 - Network failures or timeouts loading components → See [async-component-error-handling](reference/async-component-error-handling.md)
 - Template refs undefined after component reactivation → See [async-component-keepalive-ref-issue](reference/async-component-keepalive-ref-issue.md)
 
+### Render Functions
+- Render function output stays static after state changes → See [rendering-render-function-return-from-setup](reference/rendering-render-function-return-from-setup.md)
+- Reused vnode instances render incorrectly → See [render-function-vnodes-must-be-unique](reference/render-function-vnodes-must-be-unique.md)
+- String component names render as HTML elements → See [rendering-resolve-component-for-string-names](reference/rendering-resolve-component-for-string-names.md)
+- Accessing vnode internals breaks on Vue updates → See [render-function-avoid-internal-vnode-properties](reference/render-function-avoid-internal-vnode-properties.md)
+- Vue 2 render function patterns crash in Vue 3 → See [rendering-render-function-h-import-vue3](reference/rendering-render-function-h-import-vue3.md)
+- Slot content not rendering from h() → See [rendering-render-function-slots-as-functions](reference/rendering-render-function-slots-as-functions.md)
+
 ### KeepAlive
 - Child components mount twice with nested Vue Router routes → See [keepalive-router-nested-double-mount](reference/keepalive-router-nested-double-mount.md)
 - Memory grows when combining KeepAlive with Transition animations → See [keepalive-transition-memory-leak](reference/keepalive-transition-memory-leak.md)

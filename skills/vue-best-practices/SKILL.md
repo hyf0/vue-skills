@@ -23,6 +23,14 @@ Props, emits, `v-model`, and provide/inject define how data moves through compon
 
 - Data flow patterns for props, emits, v-model, and provide/inject → See [component-data-flow](reference/component-data-flow.md)
 
+### Advanced Component
+
+#### Render Functions
+
+Vue recommends using templates to build applications in the vast majority of cases. However, there are situations where we need the full programmatic power of JavaScript. That's where we can use the render function.
+
+- Render function patterns: keys, events, v-model, directives, and performance → See [render-functions](reference/render-functions.md)
+
 ## Built-in Components
 
 ### `<Transition>`
@@ -118,23 +126,6 @@ Directives are for DOM-level behavior and should stay small, side-effect safe, a
 - Setting up Vue Router route component loading → See [async-component-vue-router](reference/async-component-vue-router.md)
 - Improving Time to Interactive with SSR apps → See [async-component-hydration-strategies](reference/async-component-hydration-strategies.md)
 - Loading spinner flashing on fast networks → See [async-component-loading-delay](reference/async-component-loading-delay.md)
-
-## Render Functions
-- Render function from setup doesn't update reactively → See [rendering-render-function-return-from-setup](reference/rendering-render-function-return-from-setup.md)
-- Same vnode appearing multiple times in tree → See [render-function-vnodes-must-be-unique](reference/render-function-vnodes-must-be-unique.md)
-- Rendering lists in render functions without keys → See [render-function-v-for-keys-required](reference/render-function-v-for-keys-required.md)
-- Implementing .stop, .prevent in render functions → See [render-function-event-modifiers](reference/render-function-event-modifiers.md)
-- Two-way binding on components in render functions → See [render-function-v-model-implementation](reference/render-function-v-model-implementation.md)
-- Using string names for components in render functions → See [rendering-resolve-component-for-string-names](reference/rendering-resolve-component-for-string-names.md)
-- Accessing vnode internals like el or shapeFlag → See [render-function-avoid-internal-vnode-properties](reference/render-function-avoid-internal-vnode-properties.md)
-- Creating simple stateless presentational components → See [render-function-functional-components](reference/render-function-functional-components.md)
-- Applying custom directives in render functions → See [render-function-custom-directives](reference/render-function-custom-directives.md)
-- Excessive rerenders from watchers or deep watchers → See [rendering-excessive-rerenders-watch-vs-computed](reference/rendering-excessive-rerenders-watch-vs-computed.md)
-- Choosing render functions over templates → See [rendering-prefer-templates-over-render-functions](reference/rendering-prefer-templates-over-render-functions.md)
-- Migrating Vue 2 render functions to Vue 3 → See [rendering-render-function-h-import-vue3](reference/rendering-render-function-h-import-vue3.md)
-- Passing slot content to h() incorrectly → See [rendering-render-function-slots-as-functions](reference/rendering-render-function-slots-as-functions.md)
-- Understanding Vue's vdom optimization blocks → See [rendering-understand-vdom-block-structure](reference/rendering-understand-vdom-block-structure.md)
-
 
 ## TypeScript
 - Declaring props with TypeScript in composition API components → See [ts-defineprops-type-based-declaration](reference/ts-defineprops-type-based-declaration.md)
