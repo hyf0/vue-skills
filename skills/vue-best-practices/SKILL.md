@@ -181,11 +181,9 @@ Vue 3 best practices, common gotchas, and performance optimization.
 - Understanding Vue's vdom optimization blocks → See [rendering-understand-vdom-block-structure](reference/rendering-understand-vdom-block-structure.md)
 
 ### Teleport
-- Modal breaks with parent CSS transforms → See [teleport-css-positioning-issues](reference/teleport-css-positioning-issues.md)
-- Content needs different layout on mobile → See [teleport-disabled-for-responsive](reference/teleport-disabled-for-responsive.md)
-- Unsure if props/events work through teleport → See [teleport-logical-hierarchy-preserved](reference/teleport-logical-hierarchy-preserved.md)
-- Multiple modals targeting same container → See [teleport-multiple-to-same-target](reference/teleport-multiple-to-same-target.md)
-- Scoped styles not applying to teleported content → See [teleport-scoped-styles-limitation](reference/teleport-scoped-styles-limitation.md)
+Teleport renders part of a component in a different DOM location while preserving the Vue component hierarchy. Use it for overlays that must escape stacking contexts or overflow (modals, tooltips, toasts) and for layouts that switch between inline and overlay rendering.
+
+- Teleport best practices and common patterns → See [component-teleport](reference/component-teleport.md)
 
 ### Suspense
 - Want to track Suspense loading states programmatically → See [suspense-events-for-state-tracking](reference/suspense-events-for-state-tracking.md)

@@ -94,6 +94,7 @@ For development best practices and common gotchas, use `vue-best-practices`.
 ### Teleport
 - Teleport target element not found in DOM → See [teleport-target-must-exist](reference/teleport-target-must-exist.md)
 - Teleported content breaks SSR hydration → See [teleport-ssr-hydration](reference/teleport-ssr-hydration.md)
+- Scoped styles not applying to teleported content → See [teleport-scoped-styles-limitation](reference/teleport-scoped-styles-limitation.md)
 
 ### Suspense
 - Need to handle async errors from Suspense components → See [suspense-no-builtin-error-handling](reference/suspense-no-builtin-error-handling.md)
