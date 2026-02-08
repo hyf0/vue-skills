@@ -29,6 +29,10 @@ In Vue, slots are placeholders in a child component where a parent can insert it
 
 - Component slot API patterns: wrapper rendering, TypeScript slot typing, fallback content, and renderless-vs-composable decisions → See [component-slots](reference/component-slots.md)
 
+### Fallthrough Attributes
+- Accessing hyphenated attributes in JavaScript code → See [attrs-hyphenated-property-access](reference/attrs-hyphenated-property-access.md)
+- Watching fallthrough attributes for changes with watch() → See [attrs-not-reactive](reference/attrs-not-reactive.md)
+
 ### Advanced Component
 
 #### Render Functions
@@ -84,10 +88,6 @@ Vue recommends using templates to build applications in the vast majority of cas
 ## Lifecycle
 - Lifecycle hooks don't execute asynchronously → See [lifecycle-hooks-synchronous-registration](reference/lifecycle-hooks-synchronous-registration.md)
 - Expensive operations slow performance drastically → See [updated-hook-performance](reference/updated-hook-performance.md)
-
-## Attrs
-- Accessing hyphenated attributes in JavaScript code → See [attrs-hyphenated-property-access](reference/attrs-hyphenated-property-access.md)
-- Watching fallthrough attributes for changes with watch() → See [attrs-not-reactive](reference/attrs-not-reactive.md)
 
 ## Composables
 - Composable has unexpected side effects affecting external state → See [composable-avoid-hidden-side-effects](reference/composable-avoid-hidden-side-effects.md)
