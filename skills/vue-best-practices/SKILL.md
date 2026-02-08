@@ -86,14 +86,7 @@ Vue recommends using templates to build applications in the vast majority of cas
 - Expensive operations slow performance drastically → See [updated-hook-performance](reference/updated-hook-performance.md)
 
 ## Composables
-- Building complex logic from smaller focused composables → See [composable-composition-pattern](reference/composable-composition-pattern.md)
-- Composable has many optional parameters or confusing argument order → See [composable-options-object-pattern](reference/composable-options-object-pattern.md)
-- Need to prevent uncontrolled mutations of composable state → See [composable-readonly-state](reference/composable-readonly-state.md)
-- Unsure whether logic belongs in composable or utility function → See [composable-vs-utility-functions](reference/composable-vs-utility-functions.md)
-
-## Composition API
-
-- Composition API code becoming scattered and hard to maintain → See [composition-api-code-organization](reference/composition-api-code-organization.md)
+- Building composables, designing options-object APIs, enforcing readonly state boundaries, deciding utility-vs-composable boundaries, and organizing composable code by feature concern → See [composables](reference/composables.md)
 
 ## Directives
 
