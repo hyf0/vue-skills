@@ -15,7 +15,7 @@ Vue 3 best practices, common gotchas, and performance optimization.
 ## Components
 
 ### SFC (Single File Components)
-- SFC naming, registration, usage, structure, communication patterns and styling patterns → See [sfc](reference/sfc.md)
+- SFC naming, registration, usage, structure, communication patterns, styling, and template patterns (`v-html` safety, list filtering/sorting, `v-if` vs `v-show`) → See [sfc](reference/sfc.md)
 
 ### Component Data Flow
 
@@ -77,13 +77,6 @@ Vue recommends using templates to build applications in the vast majority of cas
 `<Suspense>` coordinates async dependencies (async components or async setup) and renders a fallback while they resolve. Use it when you want a loading boundary for async trees, route-level views, or data-driven UI.
 
 - Suspense best practices, composition patterns, and common gotchas → See [component-suspense](reference/component-suspense.md)
-
-## Templates
-- Rendering untrusted user content as HTML → See [v-html-xss-security](reference/v-html-xss-security.md)
-- Filtering or conditionally hiding list items → See [no-v-if-with-v-for](reference/no-v-if-with-v-for.md)
-- Functions in templates modifying data unexpectedly → See [template-functions-no-side-effects](reference/template-functions-no-side-effects.md)
-- Performance issues with filtered or sorted lists → See [v-for-use-computed-for-filtering](reference/v-for-use-computed-for-filtering.md)
-- Deciding between v-if and v-show for conditionals → See [v-if-vs-v-show-performance](reference/v-if-vs-v-show-performance.md)
 
 ## Events & Modifiers
 - Need to handle same event only one time → See [event-once-modifier-for-single-use](reference/event-once-modifier-for-single-use.md)

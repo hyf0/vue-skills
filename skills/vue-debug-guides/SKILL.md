@@ -53,6 +53,8 @@ For development best practices and common gotchas, use `vue-best-practices`.
 - "Cannot read property of undefined" runtime errors → See [v-if-null-check-order](reference/v-if-null-check-order.md)
 - Dynamic directive arguments not working properly → See [dynamic-argument-constraints](reference/dynamic-argument-constraints.md)
 - v-else elements rendering unconditionally always → See [v-else-must-follow-v-if](reference/v-else-must-follow-v-if.md)
+- Mixing v-if with v-for causes precedence bugs and migration breakage → See [no-v-if-with-v-for](reference/no-v-if-with-v-for.md)
+- Template function calls mutating state cause unpredictable re-render bugs → See [template-functions-no-side-effects](reference/template-functions-no-side-effects.md)
 - Child components in loops showing undefined data → See [v-for-component-props](reference/v-for-component-props.md)
 - Array order changing after sorting or reversing → See [v-for-computed-reverse-sort](reference/v-for-computed-reverse-sort.md)
 - List items disappearing or swapping state unexpectedly → See [v-for-key-attribute](reference/v-for-key-attribute.md)

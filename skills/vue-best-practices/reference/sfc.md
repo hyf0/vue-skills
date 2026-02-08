@@ -1,12 +1,12 @@
 ---
-title: Single-File Component Structure and Styling Patterns
+title: Single-File Component Structure, Styling, and Template Patterns
 impact: MEDIUM
 impactDescription: Consistent SFC structure and styling choices improve maintainability, tooling support, and render performance
 type: best-practice
-tags: [vue3, sfc, scoped-css, styles, build-tools, performance]
+tags: [vue3, sfc, scoped-css, styles, build-tools, performance, template, v-html, v-for, computed, v-if, v-show]
 ---
 
-# Single-File Component Structure and Styling Patterns
+# Single-File Component Structure, Styling, and Template Patterns
 
 **Impact: MEDIUM** - Using SFCs with consistent structure and performant styling keeps components easier to maintain and avoids unnecessary render overhead.
 
@@ -19,6 +19,9 @@ tags: [vue3, sfc, scoped-css, styles, build-tools, performance]
 - [ ] Use props/emit for component communication; reserve refs for imperative actions
 - [ ] Prefer class selectors (not element selectors) in scoped CSS for performance
 - [ ] Use camelCase keys in `:style` bindings for consistency and IDE support
+- [ ] Never use `v-html` with untrusted/user-provided content
+- [ ] Use computed properties (not inline expressions/method calls) for filtered or sorted lists
+- [ ] Choose `v-if` vs `v-show` based on toggle frequency and initial render cost
 
 ## Use SFCs with build tools
 
@@ -247,10 +250,112 @@ p { line-height: 1.6; }
 </template>
 ```
 
+## Never render untrusted HTML with `v-html`
+
+**Incorrect:**
+```vue
+<template>
+  <!-- DANGEROUS: untrusted input can inject scripts -->
+  <article v-html="userProvidedContent"></article>
+</template>
+```
+
+**Correct:**
+```vue
+<script setup>
+import { computed } from 'vue'
+import DOMPurify from 'dompurify'
+
+const props = defineProps<{
+  trustedHtml?: string
+  plainText: string
+}>()
+
+const safeHtml = computed(() => DOMPurify.sanitize(props.trustedHtml ?? ''))
+</script>
+
+<template>
+  <!-- Preferred: escaped interpolation -->
+  <p>{{ props.plainText }}</p>
+
+  <!-- Only for trusted/sanitized HTML -->
+  <article v-html="safeHtml"></article>
+</template>
+```
+
+## Use computed for filtered/sorted lists
+
+**Incorrect:**
+```vue
+<template>
+  <!-- Recalculates every render -->
+  <li v-for="item in items.filter(i => i.isActive)" :key="item.id">
+    {{ item.name }}
+  </li>
+
+  <!-- Also recalculates every render -->
+  <li v-for="item in getSortedItems()" :key="item.id">
+    {{ item.name }}
+  </li>
+</template>
+```
+
+**Correct:**
+```vue
+<script setup>
+import { computed, ref } from 'vue'
+
+const items = ref([
+  { id: 1, name: 'A', isActive: true },
+  { id: 2, name: 'B', isActive: false }
+])
+
+const visibleItems = computed(() => {
+  return items.value
+    .filter(item => item.isActive)
+    .sort((a, b) => a.name.localeCompare(b.name))
+})
+</script>
+
+<template>
+  <li v-for="item in visibleItems" :key="item.id">
+    {{ item.name }}
+  </li>
+</template>
+```
+
+## Choose `v-if` vs `v-show` by toggle behavior
+
+**Incorrect:**
+```vue
+<template>
+  <!-- Frequent toggles with v-if cause repeated mount/unmount -->
+  <ComplexPanel v-if="isPanelOpen" />
+
+  <!-- Rarely shown content with v-show pays initial render cost -->
+  <AdminPanel v-show="isAdmin" />
+</template>
+```
+
+**Correct:**
+```vue
+<template>
+  <!-- Frequent toggles: keep in DOM, toggle display -->
+  <ComplexPanel v-show="isPanelOpen" />
+
+  <!-- Rare condition: lazy render only when true -->
+  <AdminPanel v-if="isAdmin" />
+</template>
+```
+
 ## Reference
 - [Vue.js Introduction - Single-File Components](https://vuejs.org/guide/introduction.html#single-file-components)
 - [Vue.js SFC Syntax Specification](https://vuejs.org/api/sfc-spec.html)
 - [Vue.js Scoped CSS](https://vuejs.org/api/sfc-css-features.html#scoped-css)
+- [Vue.js Template Syntax - Raw HTML](https://vuejs.org/guide/essentials/template-syntax.html#raw-html)
+- [OWASP XSS Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html)
+- [Vue.js List Rendering - Displaying Filtered and Sorted Results](https://vuejs.org/guide/essentials/list.html#displaying-filtered-sorted-results)
+- [Vue.js Conditional Rendering - v-if vs v-show](https://vuejs.org/guide/essentials/conditional.html#v-if-vs-v-show)
 - [Vue.js Class and Style Bindings](https://vuejs.org/guide/essentials/class-and-style.html)
 - [Vue.js Component Registration](https://vuejs.org/guide/components/registration.html)
 - [Vue.js Component Name Casing](https://vuejs.org/guide/components/registration.html#component-name-casing)
