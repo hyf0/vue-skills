@@ -99,10 +99,8 @@ Vue recommends using templates to build applications in the vast majority of cas
 - Unsure whether logic belongs in composable or utility function → See [composable-vs-utility-functions](reference/composable-vs-utility-functions.md)
 
 ## Composition API
-- Optimizing production bundle size and performance → See [composition-api-bundle-size-minification](reference/composition-api-bundle-size-minification.md)
+
 - Composition API code becoming scattered and hard to maintain → See [composition-api-code-organization](reference/composition-api-code-organization.md)
-- Fixing naming conflicts and unclear data origins in mixins → See [composition-api-mixins-replacement](reference/composition-api-mixins-replacement.md)
-- Gradually migrating large Options API codebase → See [composition-api-options-api-coexistence](reference/composition-api-options-api-coexistence.md)
 
 ## Directives
 
