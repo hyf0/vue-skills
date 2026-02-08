@@ -44,9 +44,19 @@ In Vue, Async Components are components that load only when they’re needed ins
 - Accessing hyphenated attributes in JavaScript code → See [attrs-hyphenated-property-access](reference/attrs-hyphenated-property-access.md)
 - Watching fallthrough attributes for changes with watch() → See [attrs-not-reactive](reference/attrs-not-reactive.md)
 
-### Advanced Component
+### Built-in Components
 
-#### Render Functions
+- `<Transition>` animates a single element or component entering/leaving. Use it for view swaps, toggling UI states, or simple enter/leave effects. See [transition](reference/component-transition.md)
+
+- `<TransitionGroup>` animates lists of items entering, leaving, and moving. Use it for `v-for` lists where items change over time. See [transition-group](reference/component-transition-group.md)
+
+- `<KeepAlive>` caches component instances to preserve state when switching between views. Use it for tabbed UIs, route-level caching, or any workflow where returning to a view should restore its state rather than re-mounting from scratch. See [component-keep-alive](reference/component-keep-alive.md)
+
+- `<Teleport>` renders part of a component in a different DOM location while preserving the Vue component hierarchy. Use it for overlays that must escape stacking contexts or overflow (modals, tooltips, toasts) and for layouts that switch between inline and overlay rendering. See [component-teleport](reference/component-teleport.md)
+
+- `<Suspense>` coordinates async dependencies (async components or async setup) and renders a fallback while they resolve. Use it when you want a loading boundary for async trees, route-level views, or data-driven UI. See [component-suspense](reference/component-suspense.md)
+
+### Render Functions (Advanced)
 
 Vue recommends using templates to build applications in the vast majority of cases. However, there are situations where we need the full programmatic power of JavaScript. That's where we can use the render function.
 
@@ -79,34 +89,3 @@ Directives are for DOM-level behavior and should stay small, side-effect safe, a
 - List performance degrading from deeply nested component structure → See [perf-avoid-component-abstraction-in-lists](reference/perf-avoid-component-abstraction-in-lists.md)
 - Page load metrics suffering from client-side JavaScript execution delay → See [perf-ssr-ssg-for-page-load](reference/perf-ssr-ssg-for-page-load.md)
 - Expensive operations slow performance drastically → See [updated-hook-performance](reference/updated-hook-performance.md)
-
-## Built-in Components
-
-### `<Transition>`
-
-`<Transition>` animates a single element or component entering/leaving. Use it for view swaps, toggling UI states, or simple enter/leave effects.
-
-- Transition usage patterns and performance best practices → See [transition](reference/component-transition.md)
-
-### `<TransitionGroup>`
-
-`<TransitionGroup>` animates lists of items entering, leaving, and moving. Use it for `v-for` lists where items change over time.
-
-- TransitionGroup list animation patterns and keying guidance → See [transition-group](reference/component-transition-group.md)
-
-### `<KeepAlive>`
-
-`<KeepAlive>` caches component instances to preserve state when switching between views. Use it for tabbed UIs, route-level caching, or any workflow where returning to a view should restore its state rather than re-mounting from scratch.
-
-- KeepAlive best practices and cache control patterns → See [component-keep-alive](reference/component-keep-alive.md)
-
-### `<Teleport>`
-
-`<Teleport>` renders part of a component in a different DOM location while preserving the Vue component hierarchy. Use it for overlays that must escape stacking contexts or overflow (modals, tooltips, toasts) and for layouts that switch between inline and overlay rendering.
-
-- Teleport best practices and common patterns → See [component-teleport](reference/component-teleport.md)
-
-### `<Suspense>`
-`<Suspense>` coordinates async dependencies (async components or async setup) and renders a fallback while they resolve. Use it when you want a loading boundary for async trees, route-level views, or data-driven UI.
-
-- Suspense best practices, composition patterns, and common gotchas → See [component-suspense](reference/component-suspense.md)
