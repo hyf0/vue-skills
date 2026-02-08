@@ -17,6 +17,7 @@ tags: [vue3, directives, custom-directives, composition]
 - Clean up side effects in `unmounted`
 - Prefer function shorthand for single-hook directives
 - Use the `v-` prefix and script setup registration
+- Handle SSR with `getSSRProps`
 - Prefer declarative templates when possible
 - Decide between directives and components
 
@@ -87,6 +88,36 @@ const vFocus = (el) => el.focus()
 </template>
 ```
 
+## Handle SSR with `getSSRProps`
+
+Directive hooks such as `mounted` and `updated` do not run during SSR. If a directive sets attributes/classes that affect rendered HTML, provide an SSR equivalent via `getSSRProps` to avoid hydration mismatches.
+
+**Incorrect:**
+```ts
+const vTooltip = {
+  mounted(el, binding) {
+    el.setAttribute('data-tooltip', binding.value)
+    el.classList.add('has-tooltip')
+  }
+}
+```
+
+**Correct:**
+```ts
+const vTooltip = {
+  mounted(el, binding) {
+    el.setAttribute('data-tooltip', binding.value)
+    el.classList.add('has-tooltip')
+  },
+  getSSRProps(binding) {
+    return {
+      'data-tooltip': binding.value,
+      class: 'has-tooltip'
+    }
+  }
+}
+```
+
 ## Prefer Declarative Templates When Possible
 
 If a standard attribute or binding works, use it instead of a directive.
@@ -98,3 +129,4 @@ Use a directive for DOM-level behavior. Use a component when behavior affects st
 ## References
 
 - [Vue.js Custom Directives](https://vuejs.org/guide/reusability/custom-directives.html)
+- [Vue.js SSR - Custom Directives](https://vuejs.org/guide/scaling-up/ssr.html#custom-directives)
