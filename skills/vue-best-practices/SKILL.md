@@ -39,8 +39,7 @@ In Vue, Async Components are components that load only when they’re needed ins
 
 ### Fallthrough Attributes
 
-- Accessing hyphenated attributes in JavaScript code → See [attrs-hyphenated-property-access](reference/attrs-hyphenated-property-access.md)
-- Watching fallthrough attributes for changes with watch() → See [attrs-not-reactive](reference/attrs-not-reactive.md)
+- Accessing and handling fallthrough attributes (`$attrs` access patterns, event listener keys, and `useAttrs()` reactivity limits) → See [component-fallthrough-attrs](reference/component-fallthrough-attrs.md)
 
 ### Built-in Components
 
