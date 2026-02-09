@@ -73,8 +73,7 @@ Directives are for DOM-level behavior and should stay small, side-effect safe, a
 
 ### Plugins
 
-- Creating a new Vue plugin from scratch → See [plugin-structure-install-method](reference/plugin-structure-install-method.md)
-- Preventing collisions between multiple plugins → See [plugin-symbol-injection-keys](reference/plugin-symbol-injection-keys.md)
+- Building and typing Vue plugins (`install()` structure, app registration patterns, and symbol-based injection keys) → See [plugins](reference/plugins.md)
 
 ## Animation
 
