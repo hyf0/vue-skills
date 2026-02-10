@@ -1,105 +1,143 @@
 ---
-title: Reactivity Core Patterns (ref, shallowRef, computed)
+title: Reactivity Core Patterns (ref, reactive, shallowRef, computed, watch)
 impact: MEDIUM
-impactDescription: Consistent reactivity patterns keep state predictable and avoid unnecessary overhead in Vue 3 apps
+impactDescription: Clear reactivity choices keep state predictable and reduce unnecessary updates in Vue 3 apps
 type: efficiency
-tags: [vue3, reactivity, ref, reactive, shallowRef, computed, watchEffect, external-state, best-practice]
+tags: [vue3, reactivity, ref, reactive, shallowRef, computed, watch, watchEffect, external-state, best-practice]
 ---
 
-# Reactivity Core Patterns (ref, shallowRef, computed)
+# Reactivity Core Patterns (ref, reactive, shallowRef, computed, watch)
 
-**Impact: MEDIUM** - Standardizing how you declare state and derive values makes components easier to reason about and reduces reactivity overhead.
+**Impact: MEDIUM** - Choose the right reactive primitive first, derive with `computed`, and use watchers only for side effects.
 
-These patterns cover the default choices for local state, large or external data, and derived values.
+This reference covers the core reactivity decisions for local state, external data, derived values, and effects.
+
+## Table of Contents
+
+- Task Checklist
+- State primitives
+- Derived state with `computed`
+- Side effects with `watch` and `watchEffect`
 
 ## Task Checklist
 
-- [ ] Default to `ref()` for local state that can be replaced or is a primitive
-- [ ] Use `reactive()` only for tightly related state you will mutate in place
-- [ ] Use `shallowRef()` for large data or external state objects
-- [ ] Use `computed()` for derived values; reserve `watchEffect()` for side effects
-- [ ] Use `computed` for derived values to avoid extra re-renders
-- [ ] Use computed properties (not inline expressions/method calls) for filtered or sorted lists
+- [ ] Default to `ref()` for primitives and replaceable local state
+- [ ] Use `reactive()` for related object state mutated in place
+- [ ] Use `shallowRef()` for large payloads and external state snapshots
+- [ ] Use `computed()` for derived values (totals, filtered lists, class maps)
+- [ ] Keep expensive derivations out of templates (no inline filter/sort/method calls)
+- [ ] Use `watch`/`watchEffect` only for side effects
+- [ ] Avoid deep watching large objects; watch specific sources instead
+- [ ] Use `{ immediate: true }` when a watcher must also run on initial load
 
-## Prefer `ref()` for local state
+## State primitives
+
+### Default to `ref()` for primitives and replaceable state
 
 **Incorrect:**
-```javascript
+```ts
 import { reactive } from 'vue'
 
-// Avoid: reactive for primitive or replaceable state
 const count = reactive(0)
 let state = reactive({ items: [] })
 
-// Replacing the whole object loses intent and consistency
 state = reactive({ items: [1, 2, 3] })
 ```
 
 **Correct:**
-```javascript
+```ts
 import { ref } from 'vue'
 
 const count = ref(0)
 const state = ref({ items: [] })
 
-// Replace the whole value explicitly
 state.value = { items: [1, 2, 3] }
 ```
 
-## Use `shallowRef()` for large or external data
+### Use `reactive()` for tightly related in-place mutations
 
 **Incorrect:**
-```javascript
+```ts
 import { ref } from 'vue'
 
-// Deep proxying a huge payload adds overhead
+const firstName = ref('')
+const lastName = ref('')
+const email = ref('')
+
+function resetForm() {
+  firstName.value = ''
+  lastName.value = ''
+  email.value = ''
+}
+```
+
+**Correct:**
+```ts
+import { reactive } from 'vue'
+
+const form = reactive({
+  firstName: '',
+  lastName: '',
+  email: ''
+})
+
+function resetForm() {
+  form.firstName = ''
+  form.lastName = ''
+  form.email = ''
+}
+```
+
+### Use `shallowRef()` for large or external data
+
+**Incorrect:**
+```ts
+import { ref } from 'vue'
+
 const users = ref(await fetchUsers())
 ```
 
 **Correct:**
-```javascript
+```ts
 import { shallowRef } from 'vue'
 
 const users = shallowRef(await fetchUsers())
-
-// Replace the value to trigger updates
 users.value = await fetchUsers()
 ```
 
-## External state integration pattern
+### External state integration pattern
 
 **Incorrect:**
-```javascript
+```ts
 import { reactive } from 'vue'
 
-// External state gets deeply proxied and mutated in place
 const store = reactive(createExternalStore())
 store.state.count++
 ```
 
 **Correct:**
-```javascript
+```ts
 import { shallowRef, readonly } from 'vue'
 
-const state = shallowRef(createExternalStore().getState())
+const externalStore = createExternalStore()
+const state = shallowRef(externalStore.getState())
 
 function dispatch(action) {
-  const nextState = reduce(state.value, action)
-  state.value = nextState
+  state.value = reduce(state.value, action)
 }
 
 export const store = {
   state: readonly(state),
-  dispatch,
+  dispatch
 }
 ```
 
-## Computed
+## Derived state with `computed`
 
-### Prefer computed for derived state instead of watcher
+### Prefer `computed` over watcher-assigned derived refs
 
 **Incorrect:**
-```javascript
+```ts
 import { ref, watchEffect } from 'vue'
 
 const items = ref([{ price: 10 }, { price: 20 }])
@@ -111,68 +149,73 @@ watchEffect(() => {
 ```
 
 **Correct:**
-```javascript
+```ts
 import { ref, computed } from 'vue'
 
 const items = ref([{ price: 10 }, { price: 20 }])
-
 const total = computed(() =>
   items.value.reduce((sum, item) => sum + item.price, 0)
 )
 ```
 
-### Use computed for cached derivations (vs methods)
+### Keep filtered/sorted derivations out of templates
 
 **Incorrect:**
 ```vue
 <template>
-  <!-- Runs on every re-render -->
-  <p>{{ getFilteredItems() }}</p>
+  <li v-for="item in items.filter(item => item.active)" :key="item.id">
+    {{ item.name }}
+  </li>
+
+  <li v-for="item in getSortedItems()" :key="item.id">
+    {{ item.name }}
+  </li>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 
-const items = ref([{ name: 'A', active: true }, { name: 'B', active: false }])
+const items = ref([
+  { id: 1, name: 'B', active: true },
+  { id: 2, name: 'A', active: false }
+])
 
-function getFilteredItems() {
-  return items.value.filter(item => item.active)
+function getSortedItems() {
+  return [...items.value].sort((a, b) => a.name.localeCompare(b.name))
 }
 </script>
 ```
 
 **Correct:**
 ```vue
-<template>
-  <!-- Cached until items change -->
-  <p>{{ filteredItems }}</p>
-</template>
-
 <script setup>
 import { ref, computed } from 'vue'
 
-const items = ref([{ name: 'A', active: true }, { name: 'B', active: false }])
+const items = ref([
+  { id: 1, name: 'B', active: true },
+  { id: 2, name: 'A', active: false }
+])
 
-const filteredItems = computed(() => {
-  return items.value.filter(item => item.active)
-})
+const visibleItems = computed(() =>
+  items.value
+    .filter(item => item.active)
+    .sort((a, b) => a.name.localeCompare(b.name))
+)
 </script>
+
+<template>
+  <li v-for="item in visibleItems" :key="item.id">
+    {{ item.name }}
+  </li>
+</template>
 ```
 
-### Use computed for complex class/style bindings
+### Use `computed` for reusable class/style logic
 
 **Incorrect:**
 ```vue
 <template>
-  <button
-    :class="{
-      'btn': true,
-      'btn-primary': type === 'primary' && !disabled,
-      'btn-secondary': type === 'secondary' && !disabled,
-      'btn-disabled': disabled,
-      'btn-loading': isLoading
-    }"
-  >
+  <button :class="{ btn: true, 'btn-primary': type === 'primary' && !disabled, 'btn-disabled': disabled }">
     {{ label }}
   </button>
 </template>
@@ -186,15 +229,13 @@ import { computed } from 'vue'
 const props = defineProps({
   type: { type: String, default: 'primary' },
   disabled: Boolean,
-  isLoading: Boolean,
   label: String
 })
 
 const buttonClasses = computed(() => ({
   btn: true,
   [`btn-${props.type}`]: !props.disabled,
-  'btn-disabled': props.disabled,
-  'btn-loading': props.isLoading
+  'btn-disabled': props.disabled
 }))
 </script>
 
@@ -205,12 +246,12 @@ const buttonClasses = computed(() => ({
 </template>
 ```
 
-## Watchers
+## Side effects with `watch` and `watchEffect`
 
-### Avoid deep watchers on large data
+### Avoid deep watchers on large objects
 
 **Incorrect:**
-```javascript
+```ts
 import { reactive, watch } from 'vue'
 
 const state = reactive({
@@ -228,7 +269,7 @@ watch(
 ```
 
 **Correct:**
-```javascript
+```ts
 import { reactive, watch, watchEffect } from 'vue'
 
 const state = reactive({
@@ -236,84 +277,19 @@ const state = reactive({
   settings: { theme: 'dark', locale: 'en' }
 })
 
-// Watch specific properties instead
 watch(() => state.settings.theme, (theme) => {
   applyTheme(theme)
 })
 
-// Or track only what you actually read
 watchEffect(() => {
   setLocale(state.settings.locale)
 })
 ```
 
-### Use `computed` to avoid extra re-renders
+### Choose `watchEffect` vs `watch` based on control needs
 
-**Incorrect:**
-```javascript
-import { ref, watch } from 'vue'
-
-const user = ref({ name: 'John' })
-const displayName = ref('')
-
-watch(() => user.value.name, (name) => {
-  displayName.value = `User: ${name}`
-}, { immediate: true })
-```
-
-**Correct:**
-```javascript
-import { ref, computed } from 'vue'
-
-const user = ref({ name: 'John' })
-const displayName = computed(() => `User: ${user.value.name}`)
-```
-
-### Use computed for filtered/sorted lists
-
-**Incorrect:**
-```vue
-<template>
-  <!-- Recalculates every render -->
-  <li v-for="item in items.filter(i => i.isActive)" :key="item.id">
-    {{ item.name }}
-  </li>
-
-  <!-- Also recalculates every render -->
-  <li v-for="item in getSortedItems()" :key="item.id">
-    {{ item.name }}
-  </li>
-</template>
-```
-
-**Correct:**
-```vue
-<script setup>
-import { computed, ref } from 'vue'
-
-const items = ref([
-  { id: 1, name: 'A', isActive: true },
-  { id: 2, name: 'B', isActive: false }
-])
-
-const visibleItems = computed(() => {
-  return items.value
-    .filter(item => item.isActive)
-    .sort((a, b) => a.name.localeCompare(b.name))
-})
-</script>
-
-<template>
-  <li v-for="item in visibleItems" :key="item.id">
-    {{ item.name }}
-  </li>
-</template>
-```
-
-### Choose watch vs watchEffect based on control needs
-
-**Use `watchEffect` when the callback uses the same state it should react to.**
-```javascript
+**Use `watchEffect` when the callback should react to exactly what it reads:**
+```ts
 import { ref, watchEffect } from 'vue'
 
 const todoId = ref(1)
@@ -325,8 +301,8 @@ watchEffect(async () => {
 })
 ```
 
-**Use `watch` when you need old values, lazy execution, or precise sources.**
-```javascript
+**Use `watch` when you need old values, explicit sources, or lazy execution:**
+```ts
 import { ref, watch } from 'vue'
 
 const todoId = ref(1)
@@ -339,7 +315,7 @@ watch(todoId, (newId, oldId) => {
 ### Use `immediate: true` instead of duplicate initial calls
 
 **Incorrect:**
-```javascript
+```ts
 import { ref, watch, onMounted } from 'vue'
 
 const userId = ref(1)
@@ -353,7 +329,7 @@ watch(userId, (id) => loadUser(id))
 ```
 
 **Correct:**
-```javascript
+```ts
 import { ref, watch } from 'vue'
 
 const userId = ref(1)
@@ -368,7 +344,9 @@ watch(
 ## Reference
 - [Vue.js Reactivity Fundamentals](https://vuejs.org/guide/essentials/reactivity-fundamentals.html)
 - [Vue.js shallowRef API](https://vuejs.org/api/reactivity-advanced.html#shallowref)
+- [Vue.js reactive API](https://vuejs.org/api/reactivity-core.html#reactive)
 - [Vue.js computed API](https://vuejs.org/api/reactivity-core.html#computed)
+- [Vue.js watch API](https://vuejs.org/api/reactivity-core.html#watch)
 - [Vue.js watchEffect API](https://vuejs.org/api/reactivity-core.html#watcheffect)
 - [Vue.js Computed Caching vs Methods](https://vuejs.org/guide/essentials/computed.html#computed-caching-vs-methods)
 - [Vue.js Class and Style Bindings](https://vuejs.org/guide/essentials/class-and-style.html)
