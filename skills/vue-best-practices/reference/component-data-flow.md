@@ -21,6 +21,8 @@ tags: [vue3, props, emits, v-model, provide-inject, data-flow, typescript]
 ## Task Checklist
 
 - [ ] Treat props as read-only inputs
+- [ ] Use props/emit for component communication; reserve refs for imperative actions
+- [ ] When refs are required for imperative APIs, type them with `InstanceType<typeof Component> | null`
 - [ ] Emit events instead of mutating parent state directly
 - [ ] Use `defineModel` for v-model in modern Vue (3.4+)
 - [ ] Handle v-model modifiers deliberately in child components
@@ -53,6 +55,94 @@ function increment() {
   emit('update:count', props.count + 1)
 }
 </script>
+```
+
+## Prefer props/emit over component refs
+
+**Incorrect:**
+```vue
+<script setup>
+import { ref } from 'vue'
+import UserForm from './UserForm.vue'
+
+const formRef = ref(null)
+
+function submitForm() {
+  if (formRef.value.isValid) {
+    formRef.value.submit()
+  }
+}
+</script>
+
+<template>
+  <UserForm ref="formRef" />
+  <button @click="submitForm">Submit</button>
+</template>
+```
+
+**Correct:**
+```vue
+<script setup>
+import UserForm from './UserForm.vue'
+
+function handleSubmit(formData) {
+  api.submit(formData)
+}
+</script>
+
+<template>
+  <UserForm @submit="handleSubmit" />
+</template>
+```
+
+## Type component refs when imperative access is required
+
+Prefer props/emits by default. When a parent must call an exposed child method, type the ref explicitly and expose only the intended API from the child.
+
+**Incorrect:**
+```vue
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import DialogPanel from './DialogPanel.vue'
+
+const panelRef = ref(null)
+
+onMounted(() => {
+  panelRef.value.open()
+})
+</script>
+
+<template>
+  <DialogPanel ref="panelRef" />
+</template>
+```
+
+**Correct:**
+```vue
+<!-- DialogPanel.vue -->
+<script setup lang="ts">
+function open() {}
+
+defineExpose({ open })
+</script>
+```
+
+```vue
+<!-- Parent.vue -->
+<script setup lang="ts">
+import { onMounted, ref } from 'vue'
+import DialogPanel from './DialogPanel.vue'
+
+const panelRef = ref<InstanceType<typeof DialogPanel> | null>(null)
+
+onMounted(() => {
+  panelRef.value?.open()
+})
+</script>
+
+<template>
+  <DialogPanel ref="panelRef" />
+</template>
 ```
 
 ## Emits: Explicit Events Up

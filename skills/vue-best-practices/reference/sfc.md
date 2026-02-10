@@ -12,62 +12,13 @@ tags: [vue3, sfc, scoped-css, styles, build-tools, performance, template, v-html
 
 ## Task Checklist
 
-- [ ] Use `.vue` SFCs when you have a build setup (Vite, Vue CLI)
-- [ ] Colocate template, script, and styles in the same SFC by default
-- [ ] Use PascalCase for component names in templates and filenames
-- [ ] Prefer local component registration (import in each component) by default
-- [ ] Use props/emit for component communication; reserve refs for imperative actions
-- [ ] When refs are required for imperative APIs, type them with `InstanceType<typeof Component> | null`
+- [ ] Use `.vue` SFCs instead of separate `.js`/`.ts` and `.css` files for components
+  - [ ] Colocate template, script, and styles in the same SFC by default
+  - [ ] Use PascalCase for component names in templates and filenames
 - [ ] Prefer class selectors (not element selectors) in scoped CSS for performance
 - [ ] Use camelCase keys in `:style` bindings for consistency and IDE support
 - [ ] Never use `v-html` with untrusted/user-provided content
-- [ ] Use computed properties (not inline expressions/method calls) for filtered or sorted lists
 - [ ] Choose `v-if` vs `v-show` based on toggle frequency and initial render cost
-
-## Use SFCs with build tools
-
-**Incorrect:**
-```javascript
-// component.js - loses SFC tooling and scoped styles
-export default {
-  template: `
-    <div class="container">
-      <h1>{{ title }}</h1>
-      <button @click="handleClick">Click</button>
-    </div>
-  `,
-  data() {
-    return { title: 'Hello' }
-  },
-  methods: {
-    handleClick() {}
-  }
-}
-```
-
-**Correct:**
-```vue
-<script setup>
-import { ref } from 'vue'
-
-const title = ref('Hello')
-
-function handleClick() {}
-</script>
-
-<template>
-  <div class="container">
-    <h1>{{ title }}</h1>
-    <button @click="handleClick">Click</button>
-  </div>
-</template>
-
-<style scoped>
-.container {
-  padding: 1rem;
-}
-</style>
-```
 
 ## Colocate template, script, and styles
 
@@ -132,118 +83,6 @@ import UserProfile from './UserProfile.vue'
 
 <template>
   <UserProfile :user="currentUser" />
-</template>
-```
-
-## Prefer local component registration
-
-**Incorrect:**
-```javascript
-// main.ts - global registration for many components
-app.component('Card', Card)
-app.component('Modal', Modal)
-app.component('Table', Table)
-```
-
-**Correct:**
-```vue
-<script setup>
-import Card from '@/components/Card.vue'
-import UserAvatar from '@/components/UserAvatar.vue'
-</script>
-
-<template>
-  <Card>
-    <UserAvatar :user="currentUser" />
-  </Card>
-</template>
-```
-
-## Prefer props/emit over component refs
-
-**Incorrect:**
-```vue
-<script setup>
-import { ref } from 'vue'
-import UserForm from './UserForm.vue'
-
-const formRef = ref(null)
-
-function submitForm() {
-  if (formRef.value.isValid) {
-    formRef.value.submit()
-  }
-}
-</script>
-
-<template>
-  <UserForm ref="formRef" />
-  <button @click="submitForm">Submit</button>
-</template>
-```
-
-**Correct:**
-```vue
-<script setup>
-import UserForm from './UserForm.vue'
-
-function handleSubmit(formData) {
-  api.submit(formData)
-}
-</script>
-
-<template>
-  <UserForm @submit="handleSubmit" />
-</template>
-```
-
-## Type component refs when imperative access is required
-
-Prefer props/emits by default. When a parent must call an exposed child method, type the ref explicitly and expose only the intended API from the child.
-
-**Incorrect:**
-```vue
-<script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import DialogPanel from './DialogPanel.vue'
-
-const panelRef = ref(null)
-
-onMounted(() => {
-  panelRef.value.open()
-})
-</script>
-
-<template>
-  <DialogPanel ref="panelRef" />
-</template>
-```
-
-**Correct:**
-```vue
-<!-- DialogPanel.vue -->
-<script setup lang="ts">
-function open() {}
-
-defineExpose({ open })
-</script>
-```
-
-```vue
-<!-- Parent.vue -->
-<script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import DialogPanel from './DialogPanel.vue'
-
-const panelRef = ref<InstanceType<typeof DialogPanel> | null>(null)
-
-onMounted(() => {
-  panelRef.value?.open()
-})
-</script>
-
-<template>
-  <DialogPanel ref="panelRef" />
 </template>
 ```
 
@@ -331,47 +170,6 @@ const safeHtml = computed(() => DOMPurify.sanitize(props.trustedHtml ?? ''))
 
   <!-- Only for trusted/sanitized HTML -->
   <article v-html="safeHtml"></article>
-</template>
-```
-
-## Use computed for filtered/sorted lists
-
-**Incorrect:**
-```vue
-<template>
-  <!-- Recalculates every render -->
-  <li v-for="item in items.filter(i => i.isActive)" :key="item.id">
-    {{ item.name }}
-  </li>
-
-  <!-- Also recalculates every render -->
-  <li v-for="item in getSortedItems()" :key="item.id">
-    {{ item.name }}
-  </li>
-</template>
-```
-
-**Correct:**
-```vue
-<script setup>
-import { computed, ref } from 'vue'
-
-const items = ref([
-  { id: 1, name: 'A', isActive: true },
-  { id: 2, name: 'B', isActive: false }
-])
-
-const visibleItems = computed(() => {
-  return items.value
-    .filter(item => item.isActive)
-    .sort((a, b) => a.name.localeCompare(b.name))
-})
-</script>
-
-<template>
-  <li v-for="item in visibleItems" :key="item.id">
-    {{ item.name }}
-  </li>
 </template>
 ```
 

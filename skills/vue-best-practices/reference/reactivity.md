@@ -18,6 +18,8 @@ These patterns cover the default choices for local state, large or external data
 - [ ] Use `reactive()` only for tightly related state you will mutate in place
 - [ ] Use `shallowRef()` for large data or external state objects
 - [ ] Use `computed()` for derived values; reserve `watchEffect()` for side effects
+- [ ] Use `computed` for derived values to avoid extra re-renders
+- [ ] Use computed properties (not inline expressions/method calls) for filtered or sorted lists
 
 ## Prefer `ref()` for local state
 
@@ -243,6 +245,69 @@ watch(() => state.settings.theme, (theme) => {
 watchEffect(() => {
   setLocale(state.settings.locale)
 })
+```
+
+### Use `computed` to avoid extra re-renders
+
+**Incorrect:**
+```javascript
+import { ref, watch } from 'vue'
+
+const user = ref({ name: 'John' })
+const displayName = ref('')
+
+watch(() => user.value.name, (name) => {
+  displayName.value = `User: ${name}`
+}, { immediate: true })
+```
+
+**Correct:**
+```javascript
+import { ref, computed } from 'vue'
+
+const user = ref({ name: 'John' })
+const displayName = computed(() => `User: ${user.value.name}`)
+```
+
+### Use computed for filtered/sorted lists
+
+**Incorrect:**
+```vue
+<template>
+  <!-- Recalculates every render -->
+  <li v-for="item in items.filter(i => i.isActive)" :key="item.id">
+    {{ item.name }}
+  </li>
+
+  <!-- Also recalculates every render -->
+  <li v-for="item in getSortedItems()" :key="item.id">
+    {{ item.name }}
+  </li>
+</template>
+```
+
+**Correct:**
+```vue
+<script setup>
+import { computed, ref } from 'vue'
+
+const items = ref([
+  { id: 1, name: 'A', isActive: true },
+  { id: 2, name: 'B', isActive: false }
+])
+
+const visibleItems = computed(() => {
+  return items.value
+    .filter(item => item.isActive)
+    .sort((a, b) => a.name.localeCompare(b.name))
+})
+</script>
+
+<template>
+  <li v-for="item in visibleItems" :key="item.id">
+    {{ item.name }}
+  </li>
+</template>
 ```
 
 ### Choose watch vs watchEffect based on control needs

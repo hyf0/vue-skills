@@ -18,7 +18,6 @@ tags: [vue3, render-function, h, v-model, directives, performance, jsx]
 - [ ] Implement `v-model` via `modelValue` + `onUpdate:modelValue`
 - [ ] Apply custom directives with `withDirectives`
 - [ ] Use functional components for stateless presentational UI
-- [ ] Use `computed` for derived values to avoid extra re-renders
 
 ## Prefer templates over render functions
 
@@ -199,28 +198,6 @@ function Badge(props, { slots }) {
 Badge.props = ['variant']
 
 export default Badge
-```
-
-## Use `computed` to avoid extra re-renders
-
-**Incorrect:**
-```javascript
-import { ref, watch } from 'vue'
-
-const user = ref({ name: 'John' })
-const displayName = ref('')
-
-watch(() => user.value.name, (name) => {
-  displayName.value = `User: ${name}`
-}, { immediate: true })
-```
-
-**Correct:**
-```javascript
-import { ref, computed } from 'vue'
-
-const user = ref({ name: 'John' })
-const displayName = computed(() => `User: ${user.value.name}`)
 ```
 
 ## Reference
