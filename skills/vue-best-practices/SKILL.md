@@ -4,7 +4,7 @@ description: MUST be used for Vue.js tasks. Strongly recommends Composition API 
 license: MIT
 metadata:
   author: github.com/vuejs-ai
-  version: "17.0.0"
+  version: "18.0.0"
 ---
 
 # Vue Best Practices Workflow
