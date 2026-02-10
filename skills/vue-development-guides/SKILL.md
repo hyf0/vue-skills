@@ -12,9 +12,6 @@ compatibility: Requires Vue 3 (or above) or Nuxt 3 (or above) project
 
 ## Tasks Checklist
 
-- [ ] Followed the core principles
-- [ ] Followed the defaults unless there is a good reason not to
-- [ ] Followed the reactivity best practices
 - [ ] Followed the component best practices
   - [ ] Followed the Vue SFC best practices
   - [ ] Kept components focused
@@ -23,21 +20,6 @@ compatibility: Requires Vue 3 (or above) or Nuxt 3 (or above) project
   - [ ] Followed data flow best practices
 
 ---
-
-## Core Principles
-- **Keep state predictable:** one source of truth, derive everything else.
-- **Make data flow explicit:** Props down, Events up for most cases.
-- **Favor small, focused components:** easier to test, reuse, and maintain.
-- **Avoid unnecessary re-renders:** use computed properties and watchers wisely.
-- **Readability counts:** write clear, self-documenting code.
-
-## Defaults (unless the user says otherwise)
-
-- Prefer the **Composition API** over the Options API.
-
-## Reactivity
-
-IMPORTANT: You MUST follow the `references/reactivity-guide.md` for reactive state management when creating, updating a component or a composable.
 
 ## Components
 

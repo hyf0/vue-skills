@@ -11,6 +11,13 @@ metadata:
 
 Use this skill as an instruction set. Follow the workflow in order unless the user explicitly asks for a different order.
 
+## Core Principles
+- **Keep state predictable:** one source of truth, derive everything else.
+- **Make data flow explicit:** Props down, Events up for most cases.
+- **Favor small, focused components:** easier to test, reuse, and maintain.
+- **Avoid unnecessary re-renders:** use computed properties and watchers wisely.
+- **Readability counts:** write clear, self-documenting code.
+
 ## 1) Confirm architecture before coding (required)
 
 - Default stack: Vue 3 + Composition API + `<script setup lang="ts">`.
