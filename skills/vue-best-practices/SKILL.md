@@ -33,6 +33,16 @@ Use this skill as an instruction set. Follow the workflow in order unless the us
   - `references/composables.md`
 - Keep these references in active working context for the entire task, not only when a specific issue appears.
 
+### 1.2 Plan component boundaries before coding (required)
+
+Create a brief component map before implementation for any non-trivial feature.
+
+- Define each component's single responsibility in one sentence.
+- Keep entry/root and route-level view components as composition surfaces by default.
+- Move feature UI and feature logic out of entry/root/view components unless the task is intentionally a tiny single-file demo.
+- Define props/emits contracts for each child component in the map.
+- Prefer a feature folder layout (`components/<feature>/...`, `composables/use<Feature>.ts`) when adding more than one component.
+
 ## 2) Apply essential Vue foundations (required)
 
 These are essential, must-know foundations. Apply all of them in every Vue task using the core references already loaded in section `1.1`.
@@ -59,6 +69,23 @@ Split a component when it has **more than one clear responsibility** (e.g. data 
 - Prefer **smaller components + composables** over one “mega component”
 - Move **UI sections** into child components (props in, events out).
 - Move **state/side effects** into composables (`useXxx()`).
+
+Apply objective split triggers. Split the component if **any** condition is true:
+
+- It owns both orchestration/state and substantial presentational markup for multiple sections.
+- It has 3+ distinct UI sections (for example: form, filters, list, footer/status).
+- A template block is repeated or could become reusable (item rows, cards, list entries).
+
+Entry/root and route view rule:
+
+- Keep entry/root and route view components thin: app shell/layout, provider wiring, and feature composition.
+- Do not place full feature implementations in entry/root/view components when those features contain independent parts.
+- For CRUD/list features (todo, table, catalog, inbox), split at least into:
+  - feature container component
+  - input/form component
+  - list (and/or item) component
+  - footer/actions or filter/status component
+- Allow a single-file implementation only for very small throwaway demos; if chosen, explicitly justify why splitting is unnecessary.
 
 ### Component data flow
 
@@ -118,6 +145,8 @@ Performance work is a post-functionality pass. Do not optimize before core behav
 - Reactivity model is minimal and predictable.
 - SFC structure and template rules are followed.
 - Components are focused and well-factored, splitting when needed.
+- Entry/root and route view components remain composition surfaces unless there is an explicit small-demo exception.
+- Component split decisions are explicit and defensible (responsibility boundaries are clear).
 - Data flow contracts are explicit and typed.
 - Composables are used where reuse/complexity justifies them.
 - Moved state/side effects into composables if applicable
