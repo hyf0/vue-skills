@@ -52,6 +52,14 @@ These are essential, must-know foundations. Apply all of them in every Vue task 
 - Keep templates declarative; move branching/derivation to script.
 - Apply Vue template safety rules (`v-html`, list rendering, conditional rendering choices).
 
+### Keep components focused
+
+Split a component when it has **more than one clear responsibility** (e.g. data orchestration + UI, or multiple independent UI sections).
+
+- Prefer **smaller components + composables** over one “mega component”
+- Move **UI sections** into child components (props in, events out).
+- Move **state/side effects** into composables (`useXxx()`).
+
 ### Component data flow
 
 - Must-read reference from `1.1`: [component-data-flow](reference/component-data-flow.md)
@@ -109,7 +117,9 @@ Performance work is a post-functionality pass. Do not optimize before core behav
 - All must-read references were read and applied.
 - Reactivity model is minimal and predictable.
 - SFC structure and template rules are followed.
+- Components are focused and well-factored, splitting when needed.
 - Data flow contracts are explicit and typed.
 - Composables are used where reuse/complexity justifies them.
+- Moved state/side effects into composables if applicable
 - Optional features are used only when requirements demand them.
 - Performance changes were applied only after functionality was complete.

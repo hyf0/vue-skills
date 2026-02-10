@@ -21,16 +21,6 @@ compatibility: Requires Vue 3 (or above) or Nuxt 3 (or above) project
 
 ---
 
-### Keep components focused
-
-Split a component when it has **more than one clear responsibility** (e.g. data orchestration + UI, or multiple independent UI sections).
-
-- Prefer **smaller components + composables** over one “mega component”
-- Move **UI sections** into child components (props in, events out).
-- Move **state/side effects** into composables (`useXxx()`).
-
-NOTE: This rule also applies to the entry component (e.g. App.vue) in a Vue / Nuxt project by default.
-
 ### Data Flow
 
 For sharing data across the app, please follow the `references/state-management-guide.md` and consider using a Store for state management solution.
