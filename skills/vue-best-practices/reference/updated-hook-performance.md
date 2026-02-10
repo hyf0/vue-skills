@@ -12,14 +12,14 @@ tags: [vue3, vue2, lifecycle, updated, performance, optimization, reactivity]
 
 Use `updated`/`onUpdated` sparingly for post-DOM-update operations that cannot be handled by watchers or computed properties. For most reactive data handling, prefer watchers (`watch`/`watchEffect`) which provide more control over what triggers the callback.
 
-## Task Checklist
+## Task List
 
-- [ ] Never perform API calls in updated hook
-- [ ] Never mutate reactive state inside updated (causes infinite loops)
-- [ ] Use conditional checks to verify updates are relevant before acting
-- [ ] Prefer `watch` or `watchEffect` for reacting to specific data changes
-- [ ] Use throttling/debouncing if updated operations are expensive
-- [ ] Reserve updated for low-level DOM synchronization tasks
+- Never perform API calls in updated hook
+- Never mutate reactive state inside updated (causes infinite loops)
+- Use conditional checks to verify updates are relevant before acting
+- Prefer `watch` or `watchEffect` for reacting to specific data changes
+- Use throttling/debouncing if updated operations are expensive
+- Reserve updated for low-level DOM synchronization tasks
 
 **BAD:**
 ```javascript
@@ -185,8 +185,3 @@ export default {
   }
 }
 ```
-
-## References
-- [Vue.js Lifecycle Hooks](https://vuejs.org/guide/essentials/lifecycle.html)
-- [Vue.js Watchers](https://vuejs.org/guide/essentials/watchers.html)
-- [Vue.js Computed Properties](https://vuejs.org/guide/essentials/computed.html)

@@ -10,12 +10,12 @@ tags: [vue3, animation, css, class-binding, state]
 
 **Impact: LOW** - For animations on elements that are not entering or leaving the DOM, use CSS class-based animations triggered by Vue's reactive state. This is simpler than `<Transition>` and more appropriate for feedback animations like shake, pulse, or highlight effects.
 
-## Task Checklist
+## Task List
 
-- [ ] Use class-based animations for elements staying in the DOM
-- [ ] Use `<Transition>` only for enter/leave animations
-- [ ] Combine CSS animations with Vue's class bindings (`:class`)
-- [ ] Consider using `setTimeout` to auto-remove animation classes
+- Use class-based animations for elements staying in the DOM
+- Use `<Transition>` only for enter/leave animations
+- Combine CSS animations with Vue's class bindings (`:class`)
+- Consider using `setTimeout` to auto-remove animation classes
 
 **When to Use Class-based Animations:**
 - User feedback (shake on error, pulse on success)
@@ -252,7 +252,3 @@ const pulse = useAnimation(500)
   </button>
 </template>
 ```
-
-## References
-- [Vue.js Animation Techniques - Class-based Animations](https://vuejs.org/guide/extras/animation.html#class-based-animations)
-- [CSS Animations MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations)

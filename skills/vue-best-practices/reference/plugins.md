@@ -10,13 +10,13 @@ tags: [vue3, plugins, provide-inject, typescript, dependency-injection]
 
 **Impact: MEDIUM** - Vue plugins should follow the `app.use()` contract, expose explicit capabilities, and use collision-safe injection keys. This keeps plugin setup predictable and composable across large apps.
 
-## Task Checklist
+## Task List
 
-- [ ] Export plugins as an object with `install()` or as an install function
-- [ ] Use the `app` instance in `install()` to register components/directives/provides
-- [ ] Type plugin APIs with `Plugin` (and options tuple types when needed)
-- [ ] Use symbol keys (prefer `InjectionKey<T>`) for `provide/inject` in plugins
-- [ ] Add a small typed composable wrapper for required injections to fail fast
+- Export plugins as an object with `install()` or as an install function
+- Use the `app` instance in `install()` to register components/directives/provides
+- Type plugin APIs with `Plugin` (and options tuple types when needed)
+- Use symbol keys (prefer `InjectionKey<T>`) for `provide/inject` in plugins
+- Add a small typed composable wrapper for required injections to fail fast
 
 ## Structure Plugins for `app.use()`
 
@@ -164,10 +164,3 @@ export function useAuth(): AuthService {
   return auth
 }
 ```
-
-## References
-
-- [Vue: Plugins](https://vuejs.org/guide/reusability/plugins.html)
-- [Vue: Application API](https://vuejs.org/api/application.html)
-- [Vue: Provide/Inject with Symbol Keys](https://vuejs.org/guide/components/provide-inject.html#working-with-symbol-keys)
-- [Vue: TypeScript with Provide/Inject](https://vuejs.org/guide/typescript/composition-api.html#typing-provide-inject)

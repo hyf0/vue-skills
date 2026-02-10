@@ -10,13 +10,13 @@ tags: [vue3, transition-group, animation, lists, keys]
 
 **Impact: MEDIUM** - `<TransitionGroup>` animates lists of items entering, leaving, and moving. Use it for `v-for` lists or dynamic collections where individual items change over time.
 
-## Task Checklist
+## Task List
 
-- [ ] Use `<TransitionGroup>` only for lists and repeated items
-- [ ] Provide unique, stable keys for every direct child
-- [ ] Use `tag` when you need semantic or layout wrappers
-- [ ] Avoid the `mode` prop (not supported)
-- [ ] Use JavaScript hooks for staggered effects
+- Use `<TransitionGroup>` only for lists and repeated items
+- Provide unique, stable keys for every direct child
+- Use `tag` when you need semantic or layout wrappers
+- Avoid the `mode` prop (not supported)
+- Use JavaScript hooks for staggered effects
 
 ## Use TransitionGroup for Lists
 
@@ -126,8 +126,3 @@ function onEnter(el, done) {
 }
 </script>
 ```
-
-## References
-
-- [Vue.js TransitionGroup](https://vuejs.org/guide/built-ins/transition-group.html)
-- [Vue.js List Rendering Keys](https://vuejs.org/guide/essentials/list.html#maintaining-state-with-key)

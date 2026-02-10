@@ -12,13 +12,13 @@ tags: [vue3, performance, components, abstraction, lists, optimization]
 
 Don't avoid abstraction entirely, but be mindful of component depth in frequently-rendered elements like list items.
 
-## Task Checklist
+## Task List
 
-- [ ] Review list item components for unnecessary wrapper components
-- [ ] Consider flattening component hierarchies in hot paths
-- [ ] Use native elements when a component adds no value
-- [ ] Profile component counts using Vue DevTools
-- [ ] Focus optimization efforts on the most-rendered components
+- Review list item components for unnecessary wrapper components
+- Consider flattening component hierarchies in hot paths
+- Use native elements when a component adds no value
+- Profile component counts using Vue DevTools
+- Focus optimization efforts on the most-rendered components
 
 **BAD:**
 ```vue
@@ -157,6 +157,3 @@ onMounted(() => {
 | 100 items | 5 (deeply nested) | 500 | ~5x memory |
 | 1000 items | 1 (flat) | 1000 | High |
 | 1000 items | 5 (deeply nested) | 5000 | Very High |
-
-## References
-- [Vue.js Performance - Avoid Unnecessary Component Abstractions](https://vuejs.org/guide/best-practices/performance.html#avoid-unnecessary-component-abstractions)

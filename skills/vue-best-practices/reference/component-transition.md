@@ -10,12 +10,12 @@ tags: [vue3, transition, animation, performance, keys]
 
 **Impact: MEDIUM** - `<Transition>` animates entering/leaving of a single element or component. It is ideal for toggling UI states, swapping views, or animating one component at a time.
 
-## Task Checklist
+## Task List
 
-- [ ] Wrap a single element or component inside `<Transition>`
-- [ ] Provide a `key` when switching between same element types
-- [ ] Use `mode="out-in"` when you need sequential swaps
-- [ ] Prefer `transform` and `opacity` for smooth animations
+- Wrap a single element or component inside `<Transition>`
+- Provide a `key` when switching between same element types
+- Use `mode="out-in"` when you need sequential swaps
+- Prefer `transform` and `opacity` for smooth animations
 
 ## Use Transition for a Single Root Element
 
@@ -123,8 +123,3 @@ Avoid layout-triggering properties such as `height`, `margin`, or `top`. Use `tr
   opacity: 0;
 }
 ```
-
-## References
-
-- [Vue.js Transition](https://vuejs.org/guide/built-ins/transition.html)
-- [Vue.js Transition Modes](https://vuejs.org/guide/built-ins/transition.html#transition-modes)

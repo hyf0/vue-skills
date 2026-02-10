@@ -12,17 +12,17 @@ tags: [vue3, props, emits, v-model, provide-inject, data-flow, typescript]
 
 The main principle of data flow in Vue.js is **Props Down / Events Up**. This is the most maintainable default, and one-way flow scales well.
 
-## Task Checklist
+## Task List
 
-- [ ] Treat props as read-only inputs
-- [ ] Use props/emit for component communication; reserve refs for imperative actions
-- [ ] When refs are required for imperative APIs, type them with template refs
-- [ ] Emit events instead of mutating parent state directly
-- [ ] Use `defineModel` for v-model in modern Vue (3.4+)
-- [ ] Handle v-model modifiers deliberately in child components
-- [ ] Use symbols for provide/inject keys to avoid props drilling (over ~3 layers)
-- [ ] Keep mutations in the provider or expose explicit actions
-- [ ] In TypeScript projects, prefer type-based `defineProps`, `defineEmits`, and `InjectionKey`
+- Treat props as read-only inputs
+- Use props/emit for component communication; reserve refs for imperative actions
+- When refs are required for imperative APIs, type them with template refs
+- Emit events instead of mutating parent state directly
+- Use `defineModel` for v-model in modern Vue (3.4+)
+- Handle v-model modifiers deliberately in child components
+- Use symbols for provide/inject keys to avoid props drilling (over ~3 layers)
+- Keep mutations in the provider or expose explicit actions
+- In TypeScript projects, prefer type-based `defineProps`, `defineEmits`, and `InjectionKey`
 
 ## Props: One-Way Data Down
 
@@ -305,10 +305,3 @@ if (settings) {
 }
 </script>
 ```
-
-## References
-
-- [Vue.js Props](https://vuejs.org/guide/components/props.html)
-- [Vue.js Emits](https://vuejs.org/guide/components/events.html)
-- [Vue.js v-model](https://vuejs.org/guide/components/v-model.html)
-- [Vue.js Provide/Inject](https://vuejs.org/guide/components/provide-inject.html)

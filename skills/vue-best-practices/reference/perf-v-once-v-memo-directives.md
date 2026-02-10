@@ -12,12 +12,12 @@ tags: [vue3, performance, v-once, v-memo, optimization, directives]
 
 Use `v-once` for truly static content and `v-memo` for conditionally-static content in lists.
 
-## Task Checklist
+## Task List
 
-- [ ] Apply `v-once` to elements that use runtime data but never need updating
-- [ ] Apply `v-memo` to list items that should only update on specific condition changes
-- [ ] Verify memoized content doesn't need to respond to other state changes
-- [ ] Profile with Vue DevTools to confirm update skipping
+- Apply `v-once` to elements that use runtime data but never need updating
+- Apply `v-memo` to list items that should only update on specific condition changes
+- Verify memoized content doesn't need to respond to other state changes
+- Profile with Vue DevTools to confirm update skipping
 
 ## v-once: Render Once, Never Update
 
@@ -180,8 +180,3 @@ onUpdated(() => {
 })
 </script>
 ```
-
-## References
-- [Vue.js v-once Directive](https://vuejs.org/api/built-in-directives.html#v-once)
-- [Vue.js v-memo Directive](https://vuejs.org/api/built-in-directives.html#v-memo)
-- [Vue.js Performance - Update Optimizations](https://vuejs.org/guide/best-practices/performance.html#update-optimizations)

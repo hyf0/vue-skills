@@ -10,14 +10,14 @@ tags: [vue3, directives, custom-directives, composition, typescript]
 
 **Impact: MEDIUM** - Directives are for low-level DOM access. Use them sparingly, keep them side-effect safe, and prefer components or composables when you need stateful or reusable UI behavior.
 
-## Task Checklist
+## Task List
 
-- [ ] Use directives only when you need direct DOM access
-- [ ] Do not mutate directive arguments or binding objects
-- [ ] Clean up timers, listeners, and observers in `unmounted`
-- [ ] Register directives in `<script setup>` with the `v-` prefix
-- [ ] In TypeScript projects, type directive values and augment template directive types
-- [ ] Prefer components or composables for complex behavior
+- Use directives only when you need direct DOM access
+- Do not mutate directive arguments or binding objects
+- Clean up timers, listeners, and observers in `unmounted`
+- Register directives in `<script setup>` with the `v-` prefix
+- In TypeScript projects, type directive values and augment template directive types
+- Prefer components or composables for complex behavior
 
 ## Treat Directive Arguments as Read-Only
 
@@ -160,8 +160,3 @@ If a standard attribute or binding works, use it instead of a directive.
 ## Decide Between Directives and Components
 
 Use a directive for DOM-level behavior. Use a component when behavior affects structure, state, or rendering.
-
-## References
-
-- [Vue.js Custom Directives](https://vuejs.org/guide/reusability/custom-directives.html)
-- [Vue.js SSR - Custom Directives](https://vuejs.org/guide/scaling-up/ssr.html#custom-directives)

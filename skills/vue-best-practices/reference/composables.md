@@ -10,13 +10,13 @@ tags: [vue3, composables, composition-api, code-organization, api-design, readon
 
 **Impact: MEDIUM** - Treat composables as reusable, stateful building blocks and keep their code organized by feature concern. This keeps large components maintainable and prevents hard-to-debug mutation and API design issues.
 
-## Task Checklist
+## Task List
 
-- [ ] Compose complex behavior from small, focused composables
-- [ ] Use options objects for composables with multiple optional parameters
-- [ ] Return readonly state when updates must flow through explicit actions
-- [ ] Keep pure utility functions as plain utilities, not composables
-- [ ] Organize composable and component code by feature concern, and extract composables when components grow
+- Compose complex behavior from small, focused composables
+- Use options objects for composables with multiple optional parameters
+- Return readonly state when updates must flow through explicit actions
+- Keep pure utility functions as plain utilities, not composables
+- Organize composable and component code by feature concern, and extract composables when components grow
 
 ## Compose Composables from Smaller Primitives
 
@@ -288,9 +288,3 @@ export function useItems() {
   return { items, loading, fetchItems }
 }
 ```
-
-## References
-- [Vue.js Composables](https://vuejs.org/guide/reusability/composables.html)
-- [Composition API FAQ - Better Logic Reuse](https://vuejs.org/guide/extras/composition-api-faq.html#better-logic-reuse)
-- [Composition API FAQ - More Flexible Code Organization](https://vuejs.org/guide/extras/composition-api-faq.html#more-flexible-code-organization)
-- [Vue.js Reactivity API - readonly](https://vuejs.org/api/reactivity-core.html#readonly)

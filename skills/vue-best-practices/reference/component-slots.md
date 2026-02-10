@@ -10,13 +10,13 @@ tags: [vue3, slots, components, typescript, composables]
 
 **Impact: MEDIUM** - Slots are a core component API surface in Vue. Structure them intentionally so templates stay predictable, typed, and performant.
 
-## Task Checklist
+## Task List
 
-- [ ] Use shorthand syntax for named slots (`#` instead of `v-slot:`)
-- [ ] Render optional slot wrapper elements only when slot content exists (`$slots` checks)
-- [ ] Type scoped slot contracts with `defineSlots` in TypeScript components
-- [ ] Provide fallback content for optional slots
-- [ ] Prefer composables over renderless components for pure logic reuse
+- Use shorthand syntax for named slots (`#` instead of `v-slot:`)
+- Render optional slot wrapper elements only when slot content exists (`$slots` checks)
+- Type scoped slot contracts with `defineSlots` in TypeScript components
+- Provide fallback content for optional slots
+- Prefer composables over renderless components for pure logic reuse
 
 ## Shorthand syntax for named slots
 
@@ -214,10 +214,3 @@ const { x, y } = useMouse()
   <p>{{ x }}, {{ y }}</p>
 </template>
 ```
-
-## References
-- [Vue.js Slots](https://vuejs.org/guide/components/slots.html)
-- [Vue.js Slots - Conditional Slots](https://vuejs.org/guide/components/slots.html#conditional-slots)
-- [Vue.js Slots - Fallback Content](https://vuejs.org/guide/components/slots.html#fallback-content)
-- [Vue.js Slots - TypeScript](https://vuejs.org/guide/components/slots.html#slots-with-typescript)
-- [Vue.js Composables](https://vuejs.org/guide/reusability/composables.html)

@@ -10,15 +10,15 @@ tags: [vue3, suspense, async-components, async-setup, loading, fallback, router,
 
 **Impact: MEDIUM** - `<Suspense>` coordinates async dependencies (async components or async setup) and renders a fallback while they resolve. Misconfiguration leads to missing loading states, empty renders, or subtle UX bugs.
 
-## Task Checklist
+## Task List
 
-- [ ] Wrap default and fallback slot content in a single root node
-- [ ] Use `timeout` when you need the fallback to appear on reverts
-- [ ] Force root replacement with `:key` when you need Suspense to re-trigger
-- [ ] Add `suspensible` to nested Suspense boundaries (Vue 3.3+)
-- [ ] Use `@pending`, `@resolve`, and `@fallback` for programmatic loading state
-- [ ] Nest `RouterView` -> `Transition` -> `KeepAlive` -> `Suspense` in that order
-- [ ] Keep Suspense usage centralized and documented in production
+- Wrap default and fallback slot content in a single root node
+- Use `timeout` when you need the fallback to appear on reverts
+- Force root replacement with `:key` when you need Suspense to re-trigger
+- Add `suspensible` to nested Suspense boundaries (Vue 3.3+)
+- Use `@pending`, `@resolve`, and `@fallback` for programmatic loading state
+- Nest `RouterView` -> `Transition` -> `KeepAlive` -> `Suspense` in that order
+- Keep Suspense usage centralized and documented in production
 
 ## Single Root in Default and Fallback Slots
 
@@ -226,10 +226,3 @@ When combining these components, the nesting order should be `RouterView` -> `Tr
 ## Treat Suspense Cautiously in Production
 
 In production code, keep Suspense boundaries minimal, document where they are used, and have a fallback loading strategy if you ever need to replace or refactor them.
-
-## References
-
-- [Vue.js Suspense Documentation](https://vuejs.org/guide/built-ins/suspense)
-- [Vue.js Suspense Events](https://vuejs.org/guide/built-ins/suspense#events)
-- [Vue.js Nested Suspense](https://vuejs.org/guide/built-ins/suspense#nested-suspense)
-- [Vue.js Combining with Other Components](https://vuejs.org/guide/built-ins/suspense#combining-with-other-components)

@@ -10,18 +10,18 @@ tags: [vue3, sfc, scoped-css, styles, build-tools, performance, template, v-html
 
 **Impact: MEDIUM** - Using SFCs with consistent structure and performant styling keeps components easier to maintain and avoids unnecessary render overhead.
 
-## Task Checklist
+## Task List
 
-- [ ] Use `.vue` SFCs instead of separate `.js`/`.ts` and `.css` files for components
-- [ ] Colocate template, script, and styles in the same SFC by default
-- [ ] Use PascalCase for component names in templates and filenames
-- [ ] Prefer component-scoped styles
-- [ ] Prefer class selectors (not element selectors) in scoped CSS for performance
-- [ ] Access DOM / component refs with `useTemplateRef()` in Vue 3.5+
-- [ ] Use camelCase keys in `:style` bindings for consistency and IDE support
-- [ ] Use `v-for` and `v-if` correctly
-- [ ] Never use `v-html` with untrusted/user-provided content
-- [ ] Choose `v-if` vs `v-show` based on toggle frequency and initial render cost
+- Use `.vue` SFCs instead of separate `.js`/`.ts` and `.css` files for components
+- Colocate template, script, and styles in the same SFC by default
+- Use PascalCase for component names in templates and filenames
+- Prefer component-scoped styles
+- Prefer class selectors (not element selectors) in scoped CSS for performance
+- Access DOM / component refs with `useTemplateRef()` in Vue 3.5+
+- Use camelCase keys in `:style` bindings for consistency and IDE support
+- Use `v-for` and `v-if` correctly
+- Never use `v-html` with untrusted/user-provided content
+- Choose `v-if` vs `v-show` based on toggle frequency and initial render cost
 
 ## Colocate template, script, and styles
 
@@ -308,16 +308,3 @@ const safeHtml = computed(() => DOMPurify.sanitize(props.trustedHtml ?? ''))
   <AdminPanel v-if="isAdmin" />
 </template>
 ```
-
-## References
-- [Vue.js Introduction - Single-File Components](https://vuejs.org/guide/introduction.html#single-file-components)
-- [Vue.js SFC Syntax Specification](https://vuejs.org/api/sfc-spec.html)
-- [Vue.js Scoped CSS](https://vuejs.org/api/sfc-css-features.html#scoped-css)
-- [Vue.js Template Syntax - Raw HTML](https://vuejs.org/guide/essentials/template-syntax.html#raw-html)
-- [OWASP XSS Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html)
-- [Vue.js List Rendering - Displaying Filtered and Sorted Results](https://vuejs.org/guide/essentials/list.html#displaying-filtered-sorted-results)
-- [Vue.js Conditional Rendering - v-if vs v-show](https://vuejs.org/guide/essentials/conditional.html#v-if-vs-v-show)
-- [Vue.js Class and Style Bindings](https://vuejs.org/guide/essentials/class-and-style.html)
-- [Vue.js Component Registration](https://vuejs.org/guide/components/registration.html)
-- [Vue.js Component Name Casing](https://vuejs.org/guide/components/registration.html#component-name-casing)
-- [Vue.js Component Events](https://vuejs.org/guide/components/events.html)

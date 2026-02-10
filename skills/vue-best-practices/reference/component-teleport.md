@@ -10,13 +10,13 @@ tags: [vue3, teleport, modal, overlay, positioning, responsive]
 
 **Impact: MEDIUM** - `<Teleport>` renders part of a component's template in a different place in the DOM while preserving the Vue component hierarchy. Use it for overlays (modals, toasts, tooltips) or any UI that must escape stacking contexts, overflow, or fixed positioning constraints.
 
-## Task Checklist
+## Task List
 
-- [ ] Teleport overlays to `body` or a dedicated container outside the app root
-- [ ] Keep a shared target for similar UI (`#modals`, `#notifications`) and control layering with order or z-index
-- [ ] Use `:disabled` for responsive layouts that should render inline on small screens
-- [ ] Remember props, emits, and provide/inject still work through teleport
-- [ ] Avoid relying on parent stacking contexts or transforms for teleported UI
+- Teleport overlays to `body` or a dedicated container outside the app root
+- Keep a shared target for similar UI (`#modals`, `#notifications`) and control layering with order or z-index
+- Use `:disabled` for responsive layouts that should render inline on small screens
+- Remember props, emits, and provide/inject still work through teleport
+- Avoid relying on parent stacking contexts or transforms for teleported UI
 
 ## Teleport Overlays Out of Transformed Containers
 
@@ -106,9 +106,3 @@ Teleports to the same target append in declaration order:
 ```
 
 Use a shared container to keep stacking predictable, and apply z-index only when you need explicit layering.
-
-## References
-- [Vue.js Teleport - Basic Usage](https://vuejs.org/guide/built-ins/teleport.html#basic-usage)
-- [Vue.js Teleport - Disabling Teleport](https://vuejs.org/guide/built-ins/teleport.html#disabling-teleport)
-- [Vue.js Teleport - Multiple Teleports on the Same Target](https://vuejs.org/guide/built-ins/teleport.html#multiple-teleports-on-the-same-target)
-- [MDN - Stacking Context](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_positioned_layout/Understanding_z-index/Stacking_context)

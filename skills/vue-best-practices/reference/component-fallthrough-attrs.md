@@ -10,13 +10,13 @@ tags: [vue3, attrs, fallthrough-attributes, composition-api, reactivity]
 
 **Impact: MEDIUM** - Fallthrough attributes are straightforward once you follow Vue's conventions: hyphenated names use bracket notation, listener keys are camelCase `onX`, and `useAttrs()` is current-but-not-reactive.
 
-## Task Checklist
+## Task List
 
-- [ ] Access hyphenated attribute names with bracket notation (for example `attrs['data-testid']`)
-- [ ] Access event listeners with camelCase `onX` keys (for example `attrs.onClick`)
-- [ ] Do not `watch()` values returned from `useAttrs()`; those watchers do not trigger on attr changes
-- [ ] Use `onUpdated()` for attr-driven side effects
-- [ ] Promote frequently observed attrs to props when reactive observation is required
+- Access hyphenated attribute names with bracket notation (for example `attrs['data-testid']`)
+- Access event listeners with camelCase `onX` keys (for example `attrs.onClick`)
+- Do not `watch()` values returned from `useAttrs()`; those watchers do not trigger on attr changes
+- Use `onUpdated()` for attr-driven side effects
+- Promote frequently observed attrs to props when reactive observation is required
 
 ## Access Attribute and Listener Keys Correctly
 
@@ -172,9 +172,3 @@ const testId = attrs['data-testid'] as string | undefined
 const onClick = attrs.onClick as ((event: MouseEvent) => void) | undefined
 </script>
 ```
-
-## References
-
-- [Vue: Fallthrough Attributes](https://vuejs.org/guide/components/attrs.html)
-- [Vue: Accessing Fallthrough Attributes in JavaScript](https://vuejs.org/guide/components/attrs.html#accessing-fallthrough-attributes-in-javascript)
-- [Vue: Component Instance $attrs](https://vuejs.org/api/component-instance.html#attrs)

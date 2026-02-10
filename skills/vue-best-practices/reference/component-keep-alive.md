@@ -10,14 +10,14 @@ tags: [vue3, keepalive, cache, performance, router, dynamic-components]
 
 **Impact: HIGH** - `<KeepAlive>` caches component instances instead of destroying them. Use it to preserve state across switches, but manage cache size and freshness explicitly to avoid memory growth or stale UI.
 
-## Task Checklist
+## Task List
 
-- [ ] Use KeepAlive only where state preservation improves UX
-- [ ] Set a reasonable `max` to cap cache size
-- [ ] Declare component names for include/exclude matching
-- [ ] Use `onActivated`/`onDeactivated` for cache-aware logic
-- [ ] Decide how and when cached views refresh their data
-- [ ] Avoid caching memory-heavy or security-sensitive views
+- Use KeepAlive only where state preservation improves UX
+- Set a reasonable `max` to cap cache size
+- Declare component names for include/exclude matching
+- Use `onActivated`/`onDeactivated` for cache-aware logic
+- Decide how and when cached views refresh their data
+- Avoid caching memory-heavy or security-sensitive views
 
 ## When to Use KeepAlive
 
@@ -135,10 +135,3 @@ Decide whether navigation should show cached state or a fresh view. A common pat
 ```
 
 If you want cache reuse but fresh data, refresh in `onActivated` and compare query/params before fetching.
-
-## References
-
-- [Vue.js KeepAlive](https://vuejs.org/guide/built-ins/keep-alive.html)
-- [Vue.js Dynamic Components](https://vuejs.org/guide/essentials/component-basics.html#dynamic-components)
-- [Vue.js KeepAlive - Include/Exclude](https://vuejs.org/guide/built-ins/keep-alive.html#include-exclude)
-- [Vue.js KeepAlive - Max Cached Instances](https://vuejs.org/guide/built-ins/keep-alive.html#max-cached-instances)

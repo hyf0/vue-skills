@@ -10,12 +10,12 @@ tags: [vue3, async-components, ssr, hydration, performance, ux]
 
 **Impact: MEDIUM** - Async components should reduce JavaScript cost without degrading perceived performance. Focus on hydration timing in SSR and stable loading UX.
 
-## Task Checklist
+## Task List
 
-- [ ] Use lazy hydration strategies for non-critical SSR component trees
-- [ ] Import only the hydration helpers you actually use
-- [ ] Keep `loadingComponent` delay near the default `200ms` unless real UX data suggests otherwise
-- [ ] Configure `delay` and `timeout` together for predictable loading behavior
+- Use lazy hydration strategies for non-critical SSR component trees
+- Import only the hydration helpers you actually use
+- Keep `loadingComponent` delay near the default `200ms` unless real UX data suggests otherwise
+- Configure `delay` and `timeout` together for predictable loading behavior
 
 ## Use Lazy Hydration Strategies in SSR
 
@@ -95,7 +95,3 @@ const AsyncDashboard = defineAsyncComponent({
 | Small component, fast network | `200ms` |
 | Known heavy component | `100ms` |
 | Background or non-critical UI | `300-500ms` |
-
-## References
-- [Vue.js Async Components](https://vuejs.org/guide/components/async)
-- [Vue.js Async Components - Lazy Hydration](https://vuejs.org/guide/components/async.html#lazy-hydration)

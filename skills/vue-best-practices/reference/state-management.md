@@ -10,13 +10,13 @@ tags: [vue3, state-management, pinia, composables, ssr, vueuse]
 
 **Impact: HIGH** - Use the lightest state solution that fits your app architecture. SPA-only apps can use lightweight global composables, while SSR/Nuxt apps should default to Pinia for request-safe isolation and predictable tooling.
 
-## Task Checklist
+## Task List
 
-- [ ] Keep state local first, then promote to shared/global only when needed
-- [ ] Use singleton composables only in non-SSR applications
-- [ ] Expose global state as readonly and mutate through explicit actions
-- [ ] Prefer Pinia for SSR/Nuxt, large apps, and advanced debugging/plugin needs
-- [ ] Avoid exporting mutable module-level reactive state directly
+- Keep state local first, then promote to shared/global only when needed
+- Use singleton composables only in non-SSR applications
+- Expose global state as readonly and mutate through explicit actions
+- Prefer Pinia for SSR/Nuxt, large apps, and advanced debugging/plugin needs
+- Avoid exporting mutable module-level reactive state directly
 
 ## Choose the Lightest Store Approach
 
@@ -133,9 +133,3 @@ export const useAuthState = createGlobalState(() => {
   }
 })
 ```
-
-## References
-
-- [Vue: State Management](https://vuejs.org/guide/scaling-up/state-management.html)
-- [Pinia: Introduction](https://pinia.vuejs.org/introduction.html)
-- [VueUse: createGlobalState](https://vueuse.org/shared/createGlobalState/)

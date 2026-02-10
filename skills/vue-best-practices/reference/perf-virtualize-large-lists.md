@@ -12,13 +12,13 @@ tags: [vue3, performance, virtual-list, large-data, dom, optimization]
 
 Use a virtualization library when dealing with lists that could exceed 50-100 items, especially if items have complex content.
 
-## Task Checklist
+## Task List
 
-- [ ] Identify lists that render more than 50-100 items
-- [ ] Install a virtualization library (vue-virtual-scroller, @tanstack/vue-virtual)
-- [ ] Replace standard `v-for` with virtualized component
-- [ ] Ensure list items have consistent or estimable heights
-- [ ] Test with realistic data volumes during development
+- Identify lists that render more than 50-100 items
+- Install a virtualization library (vue-virtual-scroller, @tanstack/vue-virtual)
+- Replace standard `v-for` with virtualized component
+- Ensure list items have consistent or estimable heights
+- Test with realistic data volumes during development
 
 ## Recommended Libraries
 
@@ -185,8 +185,3 @@ import { DynamicScroller, DynamicScrollerItem } from 'vue-virtual-scroller'
 - Lists where all items must be accessible to screen readers simultaneously
 - Print layouts where all content must render
 - SEO-critical content that must be in initial HTML
-
-## References
-- [Vue.js Performance - Virtualize Large Lists](https://vuejs.org/guide/best-practices/performance.html#virtualize-large-lists)
-- [vue-virtual-scroller Documentation](https://github.com/Akryum/vue-virtual-scroller)
-- [TanStack Virtual](https://tanstack.com/virtual/latest)

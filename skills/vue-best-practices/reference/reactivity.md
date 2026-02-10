@@ -12,22 +12,22 @@ tags: [vue3, reactivity, ref, reactive, shallowRef, computed, watch, watchEffect
 
 This reference covers the core reactivity decisions for local state, external data, derived values, and effects.
 
-## Task Checklist
+## Task List
 
-- [ ] Declare reactive state correctly
-  - [ ] Always use `shallowRef()` instead of `ref()` for primitive values
-  - [ ] Choose the correct reactive declaration method for objects/arrays/map/set
-- [ ] Follow best practices for `reactive`
-  - [ ] Avoid destructuring from `reactive()` directly
-  - [ ] Watch correctly for `reactive`
-- [ ] Follow best practices for `computed`
-  - [ ] Prefer `computed` over watcher-assigned derived refs
-  - [ ] Keep filtered/sorted derivations out of templates
-  - [ ] Use `computed` for reusable class/style logic
-  - [ ] Keep computed getters pure (no side effects) and put side effects in watchers
-- [ ] Follow best practices for watchers
-  - [ ] Use `immediate: true` instead of duplicate initial calls
-  - [ ] Clean up async effects for watchers
+- Declare reactive state correctly
+  - Always use `shallowRef()` instead of `ref()` for primitive values
+  - Choose the correct reactive declaration method for objects/arrays/map/set
+- Follow best practices for `reactive`
+  - Avoid destructuring from `reactive()` directly
+  - Watch correctly for `reactive`
+- Follow best practices for `computed`
+  - Prefer `computed` over watcher-assigned derived refs
+  - Keep filtered/sorted derivations out of templates
+  - Use `computed` for reusable class/style logic
+  - Keep computed getters pure (no side effects) and put side effects in watchers
+- Follow best practices for watchers
+  - Use `immediate: true` instead of duplicate initial calls
+  - Clean up async effects for watchers
 
 ## Declare reactive state correctly
 
@@ -342,14 +342,3 @@ watch(query, async (q, _prev, onCleanup) => {
   results.value = await res.json()
 })
 ```
-
-## References
-- [Vue.js Reactivity Fundamentals](https://vuejs.org/guide/essentials/reactivity-fundamentals.html)
-- [Vue.js shallowRef API](https://vuejs.org/api/reactivity-advanced.html#shallowref)
-- [Vue.js reactive API](https://vuejs.org/api/reactivity-core.html#reactive)
-- [Vue.js computed API](https://vuejs.org/api/reactivity-core.html#computed)
-- [Vue.js watch API](https://vuejs.org/api/reactivity-core.html#watch)
-- [Vue.js watchEffect API](https://vuejs.org/api/reactivity-core.html#watcheffect)
-- [Vue.js Computed Caching vs Methods](https://vuejs.org/guide/essentials/computed.html#computed-caching-vs-methods)
-- [Vue.js Class and Style Bindings](https://vuejs.org/guide/essentials/class-and-style.html)
-- [Vue.js Watchers](https://vuejs.org/guide/essentials/watchers.html)

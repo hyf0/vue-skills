@@ -10,14 +10,14 @@ tags: [vue3, render-function, h, v-model, directives, performance, jsx]
 
 **Impact: MEDIUM** - Render functions are powerful but opt out of template compiler optimizations. Use them intentionally and apply the key patterns below to keep output correct and performant.
 
-## Task Checklist
+## Task List
 
-- [ ] Prefer templates; use render functions only when templates cannot express the logic
-- [ ] Always add stable keys when rendering lists with `h()`/JSX
-- [ ] Use `withModifiers` / `withKeys` for event modifiers
-- [ ] Implement `v-model` via `modelValue` + `onUpdate:modelValue`
-- [ ] Apply custom directives with `withDirectives`
-- [ ] Use functional components for stateless presentational UI
+- Prefer templates; use render functions only when templates cannot express the logic
+- Always add stable keys when rendering lists with `h()`/JSX
+- Use `withModifiers` / `withKeys` for event modifiers
+- Implement `v-model` via `modelValue` + `onUpdate:modelValue`
+- Apply custom directives with `withDirectives`
+- Use functional components for stateless presentational UI
 
 ## Prefer templates over render functions
 
@@ -199,8 +199,3 @@ Badge.props = ['variant']
 
 export default Badge
 ```
-
-## References
-- [Vue.js Render Functions & JSX](https://vuejs.org/guide/extras/render-function.html)
-- [Vue.js Rendering Mechanism](https://vuejs.org/guide/extras/rendering-mechanism.html)
-- [Vue.js Render Function APIs](https://vuejs.org/api/render-function.html)
