@@ -1,10 +1,35 @@
 ---
 name: vue-debug-guides
-description: Vue 3 debugging and error handling for runtime errors, warnings, async failures, and SSR/hydration issues. Use when diagnosing or fixing Vue issues.
+description: Diagnoses and fixes Vue 3 runtime errors, console warnings, async failures, hydration mismatches, and component lifecycle issues across .vue files and SSR/Nuxt apps. Use when a Vue component is not rendering, a Vue error or Vue console warning appears, a reactive ref stops updating, a hydration mismatch or Nuxt SSR error occurs, or when analyzing Vue stack traces, configuring Vue error handlers, or debugging any Vue 3 bug.
 ---
 
 Vue 3 debugging and error handling for runtime issues, warnings, async failures, and hydration bugs.
 For development best practices and common gotchas, use `vue-best-practices`.
+
+### Quick Diagnostics
+
+Before diving into a specific category below, run through these cross-cutting checks:
+
+1. **Check `.value` access** — refs are not auto-unwrapped outside templates; always use `ref.value` in script.
+   ```js
+   // ❌ count is a Ref object, not a number
+   console.log(count)
+   // ✅
+   console.log(count.value)
+   ```
+2. **Avoid destructuring reactive objects** — pulls out plain values, losing reactivity.
+   ```js
+   const state = reactive({ count: 0 })
+   // ❌ count is no longer reactive
+   const { count } = state
+   // ✅ use toRefs
+   const { count } = toRefs(state)
+   ```
+3. **Delay DOM access until `onMounted`** — the DOM does not exist during `setup()`.
+4. **Use `nextTick` after state changes** to read updated DOM values.
+5. **Check lifecycle hook registration** — hooks registered after an `await` are silently ignored in Composition API.
+
+---
 
 ### Reactivity
 - Tracing unexpected re-renders and state updates → See [reactivity-debugging-hooks](reference/reactivity-debugging-hooks.md)

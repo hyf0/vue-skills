@@ -1,12 +1,33 @@
 ---
 name: vue-options-api-best-practices
-description: "Vue 3 Options API style (data(), methods, this context). Each reference shows Options API solution only."
+description: "Provides code examples, solutions, and best practices for Vue.js components written in the Options API style (data(), methods, computed, lifecycle hooks, this context). Use when the user asks about Vue Options API patterns, needs help with reactive data, computed properties, TypeScript integration, prop typing, or lifecycle hooks in traditional Vue style — or prefers Options API over Composition API (non-Composition API, Vue options syntax, classic Vue components). Covers TypeScript with defineComponent, arrow function gotchas, stateful methods, provide/inject limitations, and event handler types. Each reference shows an Options API-only solution."
 version: 2.0.0
 license: MIT
 author: github.com/vuejs-ai
 ---
 
 Vue.js Options API best practices, TypeScript integration, and common gotchas.
+
+### Quick Reference — Most Common Issues
+
+| Problem | Fix |
+|---|---|
+| No TypeScript type inference on `this` | Wrap component with `defineComponent({...})` |
+| Method loses `this` context | Use `function` keyword, not arrow functions, in `methods` |
+| Debounced method shared across instances | Create the debounced function inside `created()`, not at definition time |
+
+```ts
+// Critical: always use defineComponent for TypeScript support
+import { defineComponent } from 'vue'
+export default defineComponent({
+  data() { return { count: 0 } },
+  methods: {
+    increment() { this.count++ }   // ✅ regular function — this is typed
+  }
+})
+```
+
+---
 
 ### TypeScript
 - Need to enable TypeScript type inference for component properties → See [ts-options-api-use-definecomponent](reference/ts-options-api-use-definecomponent.md)

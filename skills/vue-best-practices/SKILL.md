@@ -1,6 +1,6 @@
 ---
 name: vue-best-practices
-description: MUST be used for Vue.js tasks. Strongly recommends Composition API with `<script setup>` and TypeScript as the standard approach. Covers Vue 3, SSR, Volar, vue-tsc. Load for any Vue, .vue files, Vue Router, Pinia, or Vite with Vue work. ALWAYS use Composition API unless the project explicitly requires Options API.
+description: Use when creating Vue components, configuring Vue Router, setting up Pinia stores, handling SSR, or working on any Vue, .vue files, Vite with Vue, or Nuxt project. Applies Vue 3 best practices with Composition API and script setup as the standard approach. Covers component splitting, reactivity, data flow, composables, TypeScript, SSR, Volar, and vue-tsc. ALWAYS use Composition API unless the project explicitly requires Options API.
 license: MIT
 metadata:
   author: github.com/vuejs-ai
@@ -10,13 +10,6 @@ metadata:
 # Vue Best Practices Workflow
 
 Use this skill as an instruction set. Follow the workflow in order unless the user explicitly asks for a different order.
-
-## Core Principles
-- **Keep state predictable:** one source of truth, derive everything else.
-- **Make data flow explicit:** Props down, Events up for most cases.
-- **Favor small, focused components:** easier to test, reuse, and maintain.
-- **Avoid unnecessary re-renders:** use computed properties and watchers wisely.
-- **Readability counts:** write clear, self-documenting code.
 
 ## 1) Confirm architecture before coding (required)
 
@@ -49,32 +42,100 @@ These are essential, must-know foundations. Apply all of them in every Vue task 
 
 ### Reactivity
 
-- Must-read reference from `1.1`: [reactivity](references/reactivity.md)
 - Keep source state minimal (`ref`/`reactive`), derive everything possible with `computed`.
 - Use watchers for side effects if needed.
 - Avoid recomputing expensive logic in templates.
 
 ### SFC structure and template safety
 
-- Must-read reference from `1.1`: [sfc](references/sfc.md)
 - Keep SFC sections in this order: `<script>` → `<template>` → `<style>`.
 - Keep SFC responsibilities focused; split large components.
 - Keep templates declarative; move branching/derivation to script.
 - Apply Vue template safety rules (`v-html`, list rendering, conditional rendering choices).
 
+**Preferred `<script setup lang="ts">` pattern:**
+
+```vue
+<script setup lang="ts">
+import { ref, computed } from 'vue'
+
+const props = defineProps<{ title: string; count?: number }>()
+const emit = defineEmits<{ increment: [amount: number] }>()
+
+const localCount = ref(props.count ?? 0)
+const doubled = computed(() => localCount.value * 2)
+
+function handleClick() {
+  localCount.value++
+  emit('increment', localCount.value)
+}
+</script>
+
+<template>
+  <div>
+    <h2>{{ title }}</h2>
+    <p>Count: {{ localCount }} — Doubled: {{ doubled }}</p>
+    <button @click="handleClick">Increment</button>
+  </div>
+</template>
+```
+
 ### Keep components focused
 
 Split a component when it has **more than one clear responsibility** (e.g. data orchestration + UI, or multiple independent UI sections).
 
-- Prefer **smaller components + composables** over one “mega component”
+- Prefer **smaller components + composables** over one "mega component"
 - Move **UI sections** into child components (props in, events out).
 - Move **state/side effects** into composables (`useXxx()`).
 
-Apply objective split triggers. Split the component if **any** condition is true:
+Split the component if **any** condition is true:
 
 - It owns both orchestration/state and substantial presentational markup for multiple sections.
 - It has 3+ distinct UI sections (for example: form, filters, list, footer/status).
 - A template block is repeated or could become reusable (item rows, cards, list entries).
+
+**Well-factored parent + child split example:**
+
+```vue
+<!-- TaskList.vue — container: owns state, composes children -->
+<script setup lang="ts">
+import { ref } from 'vue'
+import TaskItem from './TaskItem.vue'
+
+const tasks = ref([{ id: 1, label: 'Buy milk', done: false }])
+
+function toggleDone(id: number) {
+  const task = tasks.value.find(t => t.id === id)
+  if (task) task.done = !task.done
+}
+</script>
+
+<template>
+  <ul>
+    <TaskItem
+      v-for="task in tasks"
+      :key="task.id"
+      :task="task"
+      @toggle="toggleDone"
+    />
+  </ul>
+</template>
+```
+
+```vue
+<!-- TaskItem.vue — presentational: receives props, emits events -->
+<script setup lang="ts">
+defineProps<{ task: { id: number; label: string; done: boolean } }>()
+defineEmits<{ toggle: [id: number] }>()
+</script>
+
+<template>
+  <li>
+    <input type="checkbox" :checked="task.done" @change="$emit('toggle', task.id)" />
+    <span :class="{ 'line-through': task.done }">{{ task.label }}</span>
+  </li>
+</template>
+```
 
 Entry/root and route view rule:
 
@@ -89,7 +150,6 @@ Entry/root and route view rule:
 
 ### Component data flow
 
-- Must-read reference from `1.1`: [component-data-flow](references/component-data-flow.md)
 - Use props down, events up as the primary model.
 - Use `v-model` only for true two-way component contracts.
 - Use provide/inject only for deep-tree dependencies or shared context.
@@ -97,7 +157,6 @@ Entry/root and route view rule:
 
 ### Composables
 
-- Must-read reference from `1.1`: [composables](references/composables.md)
 - Extract logic into composables when it is reused, stateful, or side-effect heavy.
 - Keep composable APIs small, typed, and predictable.
 - Separate feature logic from presentational components.
@@ -142,13 +201,13 @@ Performance work is a post-functionality pass. Do not optimize before core behav
 
 - Core behavior works and matches requirements.
 - All must-read references were read and applied.
-- Reactivity model is minimal and predictable.
-- SFC structure and template rules are followed.
+- Reactivity model is minimal and predictable (minimal `ref`/`reactive`, derived values use `computed`).
+- SFC structure and template rules are followed (`<script>` → `<template>` → `<style>`).
 - Components are focused and well-factored, splitting when needed.
 - Entry/root and route view components remain composition surfaces unless there is an explicit small-demo exception.
 - Component split decisions are explicit and defensible (responsibility boundaries are clear).
-- Data flow contracts are explicit and typed.
+- Data flow contracts are explicit and typed (`defineProps`, `defineEmits`, `InjectionKey`).
 - Composables are used where reuse/complexity justifies them.
-- Moved state/side effects into composables if applicable
+- State/side effects have been moved into composables where applicable.
 - Optional features are used only when requirements demand them.
 - Performance changes were applied only after functionality was complete.
