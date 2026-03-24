@@ -2,8 +2,7 @@
   "name": "vue-skills",
   "description": "A collection of skills for Vue.js development.",
   "owner": {
-    "name": "vuejs-ai",
-    "url": "https://github.com/vuejs-ai"
+    "name": "vuejs-ai"
   },
   "plugins": [
     {
