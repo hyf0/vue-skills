@@ -1,6 +1,10 @@
 {
   "name": "vue-skills",
   "description": "A collection of skills for Vue.js development.",
+  "owner": {
+    "name": "vuejs-ai",
+    "url": "https://github.com/vuejs-ai"
+  },
   "plugins": [
     {
       "name": "create-adaptable-composable",
