@@ -20,11 +20,14 @@ An alternative for Claude Code users:
 # Add marketplace
 /plugin marketplace add vuejs-ai/skills
 
+# Install all skills at once
+/plugin install vue-skills-bundle@vue-skills
+
 # Install individual skills
-/plugin install create-adaptable-composable@vue-skills
+/plugin install vue-best-practices@vue-skills
 
 # Install multiple skills
-/plugin install create-adaptable-composable@vue-skills vue-best-practices@vue-skills
+/plugin install vue-best-practices@vue-skills vue-router-best-practices@vue-skills
 ```
 
 ## Usage
