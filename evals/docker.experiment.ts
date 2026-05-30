@@ -9,7 +9,7 @@ const environment = defineDockerEnvironment({
   agent: {
     name: 'codex',
     options: {
-      model: 'gpt-5-codex-mini',
+      model: 'gpt-5.5',
       codexAuth: {
         method: 'auth-file',
       }
